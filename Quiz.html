@@ -1,0 +1,1382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <meta name="description" content="A source-linked neuro-otology study space for vestibular disorders, nystagmus, and central pathways.">
+  <title>Vestibular Review — Neuro-otology study</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font: 15px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #20322f;
+      background: #f4f7f5;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      --ink: #20322f;
+      --muted: #73817c;
+      --line: #e3eae6;
+      --green: #297963;
+      --green-dark: #205f4e;
+      --green-soft: #e9f3ee;
+      --card: #fff;
+      --red: #a9473e;
+      --red-soft: #fbefed;
+      --gold: #9a7028;
+      --gold-soft: #f8f2e6;
+    }
+    * { box-sizing: border-box; }
+    body { min-width: 320px; min-height: 100vh; margin: 0; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .topbar { display: flex; height: 76px; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); font-size: 15px; font-weight: 780; letter-spacing: -.035em; text-decoration: none; }
+    .brand-mark { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 12px; color: #fff; background: var(--green); }
+    .brand-mark svg { width: 20px; height: 20px; }
+    .top-note { color: var(--muted); font-size: 12px; }
+    .hero { display: flex; align-items: end; justify-content: space-between; gap: 26px; padding: 43px 0 27px; }
+    .eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { width: 18px; height: 2px; border-radius: 2px; background: #81b49a; content: ""; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 50px); line-height: 1.06; letter-spacing: -.065em; }
+    .hero-copy { max-width: 620px; margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .hero-count { flex: 0 0 auto; padding: 12px 15px; border: 1px solid #dce8e0; border-radius: 13px; color: var(--green-dark); background: #fff; font-size: 12px; font-weight: 750; }
+    .nav { display: flex; gap: 5px; margin-bottom: 23px; padding: 5px; border: 1px solid var(--line); border-radius: 12px; background: #edf2ee; }
+    .nav button { min-height: 38px; padding: 0 15px; border: 0; border-radius: 8px; color: #617169; background: transparent; font-size: 12px; font-weight: 750; }
+    .nav button:hover { color: var(--green-dark); }
+    .nav button[aria-current="page"] { color: var(--green-dark); background: #fff; box-shadow: 0 2px 7px rgb(35 59 48 / 7%); }
+    .view { display: none; padding-bottom: 38px; }
+    .view.is-active { display: block; }
+    .study-grid { display: grid; grid-template-columns: minmax(235px, .66fr) minmax(0, 1.65fr); align-items: start; gap: 18px; }
+    .panel { border: 1px solid var(--line); border-radius: 17px; background: var(--card); box-shadow: 0 7px 25px rgb(35 59 48 / 3%); }
+    .filter-panel { padding: 21px; }
+    .filter-panel h2, .panel-title h2 { margin: 0; font-size: 16px; letter-spacing: -.035em; }
+    .filter-panel > p { margin: 6px 0 18px; color: var(--muted); font-size: 12px; }
+    .field { display: grid; gap: 6px; margin-bottom: 14px; color: #4c5c54; font-size: 11px; font-weight: 750; }
+    .field select, .field input, .field textarea { width: 100%; min-width: 0; min-height: 41px; padding: 9px 11px; border: 1px solid #dce5df; border-radius: 9px; outline: 0; color: var(--ink); background: #fff; font-size: 12px; font-weight: 450; }
+    .field textarea { min-height: 86px; resize: vertical; }
+    .field select:focus, .field input:focus, .field textarea:focus { border-color: #79ae98; box-shadow: 0 0 0 3px rgb(41 121 99 / 10%); }
+    .filter-count { margin: 2px 0 17px; color: var(--muted); font-size: 11px; }
+    .button { display: inline-flex; min-height: 41px; align-items: center; justify-content: center; gap: 7px; padding: 0 14px; border: 1px solid transparent; border-radius: 9px; font-size: 12px; font-weight: 750; transition: background .15s, transform .15s, border-color .15s; }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { color: #fff; background: var(--green); }
+    .button-primary:hover { background: var(--green-dark); }
+    .button-quiet { border-color: var(--line); color: #506058; background: #fff; }
+    .button-quiet:hover { background: #f7f9f7; }
+    .button:disabled { cursor: not-allowed; opacity: .48; transform: none; }
+    .full-button { width: 100%; }
+    .source-note { margin: 17px 0 0; padding-top: 14px; border-top: 1px solid #edf1ee; color: #819087; font-size: 10px; line-height: 1.55; }
+    .source-note a { color: var(--green-dark); font-weight: 700; }
+    .quiz-panel { min-height: 440px; overflow: hidden; }
+    .quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 23px 15px; border-bottom: 1px solid #f0f3f0; }
+    .quiz-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+    .chip { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 9px; border-radius: 20px; color: #617169; background: #f1f5f2; font-size: 10px; font-weight: 750; }
+    .chip-green { color: var(--green-dark); background: var(--green-soft); }
+    .progress-copy { flex: 0 0 auto; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+    .progress-track { height: 3px; background: #edf2ee; }
+    .progress-fill { width: 0; height: 100%; background: #64a583; transition: width .2s ease; }
+    .question-body { padding: 26px 27px 23px; }
+    .question-label { margin: 0 0 8px; color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .question-text { margin: 0 0 20px; font-size: clamp(18px, 2.3vw, 23px); line-height: 1.4; letter-spacing: -.035em; }
+    .answers { display: grid; gap: 9px; }
+    .answer-option { display: flex; width: 100%; min-height: 48px; align-items: center; gap: 11px; padding: 10px 13px; border: 1px solid #e4eae5; border-radius: 10px; color: #394a41; background: #fff; text-align: left; font-size: 12px; transition: border-color .15s, background .15s; }
+    .answer-option:hover:not(:disabled) { border-color: #a9c8b5; background: #fbfdfb; }
+    .answer-option.is-selected { border-color: #72a78b; background: #f1f7f3; }
+    .answer-option.is-correct { border-color: #76aa8c; color: #285e43; background: #edf6f0; }
+    .answer-option.is-incorrect { border-color: #dba49c; color: #873b35; background: #fcf1ef; }
+    .answer-key { display: grid; width: 24px; height: 24px; flex: 0 0 auto; place-items: center; border: 1px solid #e3e9e4; border-radius: 7px; color: #78867e; background: #fff; font-size: 10px; font-weight: 800; }
+    .answer-option.is-selected .answer-key { border-color: #72a78b; color: var(--green-dark); }
+    .answer-option:disabled { cursor: default; }
+    .feedback { margin-top: 17px; padding: 14px 15px; border-radius: 10px; color: #345444; background: #eff6f1; font-size: 12px; }
+    .feedback.is-wrong { color: #713d35; background: var(--red-soft); }
+    .feedback strong { display: block; margin-bottom: 4px; }
+    .feedback p { margin: 0; }
+    .feedback a { display: inline-block; margin-top: 8px; color: var(--green-dark); font-size: 11px; font-weight: 750; }
+    .quiz-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; }
+    .quiz-message { min-height: 1.4em; margin: 10px 0 0; color: var(--red); font-size: 11px; }
+    .welcome-state, .finish-state { display: grid; min-height: 370px; align-content: center; justify-items: start; padding: 38px; }
+    .welcome-icon { display: grid; width: 48px; height: 48px; place-items: center; margin-bottom: 17px; border-radius: 15px; color: var(--green); background: var(--green-soft); }
+    .welcome-icon svg { width: 23px; height: 23px; }
+    .welcome-state h2, .finish-state h2 { margin: 0; font-size: 23px; letter-spacing: -.045em; }
+    .welcome-state p, .finish-state p { max-width: 480px; margin: 9px 0 20px; color: var(--muted); font-size: 13px; }
+    .score-number { margin: 5px 0 0; color: var(--green); font-size: 38px; font-weight: 800; letter-spacing: -.06em; }
+    .learn-intro { margin: 0 0 17px; color: var(--muted); font-size: 13px; }
+    .learn-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(250px, .9fr); gap: 17px; }
+    .anatomy-card { overflow: hidden; }
+    .panel-title { padding: 20px 22px 0; }
+    .panel-title p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .pathway-svg { display: block; width: 100%; height: auto; padding: 17px 15px 10px; }
+    .pathway-copy { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 8px 21px 21px; }
+    .mini-note { padding: 12px; border: 1px solid #edf1ee; border-radius: 10px; }
+    .mini-note strong { display: block; margin-bottom: 3px; color: var(--green-dark); font-size: 11px; }
+    .mini-note p { margin: 0; color: var(--muted); font-size: 11px; }
+    .pathway-list { display: grid; gap: 11px; padding: 18px 21px 21px; }
+    .pathway-item { padding: 13px; border-radius: 10px; background: #f7f9f7; }
+    .pathway-item h3 { margin: 0 0 4px; font-size: 12px; }
+    .pathway-item p { margin: 0; color: var(--muted); font-size: 11px; }
+    .anatomy-disclaimer { margin: 13px 0 0; color: #819087; font-size: 10px; }
+    .guide-section { margin-top: 22px; }
+    .guide-section > h2 { margin: 0 0 5px; font-size: 20px; letter-spacing: -.04em; }
+    .guide-section > p { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
+    .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+    .guide-card { overflow: hidden; }
+    .guide-card .pathway-svg { padding-top: 13px; }
+    .guide-card-copy { padding: 0 19px 18px; }
+    .guide-card-copy p { margin: 0 0 9px; color: #64746b; font-size: 11px; }
+    .guide-card-copy strong { color: #345b48; }
+    .guide-callout { margin: 10px 0 0; padding: 11px 12px; border-left: 3px solid #79aa8c; border-radius: 0 8px 8px 0; color: #476252; background: #f1f7f3; font-size: 11px; }
+    .localization-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .localization-table th, .localization-table td { padding: 9px 10px; border-bottom: 1px solid #edf1ee; text-align: left; vertical-align: top; }
+    .localization-table th { color: #476252; font-size: 10px; }
+    .localization-table td { color: #63746a; }
+    .library-tools { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 0 15px; }
+    .library-tools h2 { margin: 0; font-size: 19px; letter-spacing: -.04em; }
+    .search { width: min(320px, 48%); height: 41px; padding: 0 12px; border: 1px solid var(--line); border-radius: 9px; outline: 0; background: #fff; font-size: 12px; }
+    .search:focus { border-color: #79ae98; box-shadow: 0 0 0 3px rgb(41 121 99 / 10%); }
+    .question-list { display: grid; gap: 10px; }
+    .library-question { padding: 16px 18px; }
+    .library-top { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .library-question h3 { margin: 0; font-size: 14px; line-height: 1.5; }
+    .library-question p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+    .library-question a { display: inline-block; margin-top: 8px; color: var(--green-dark); font-size: 10px; font-weight: 750; }
+    .empty-list { padding: 28px; color: var(--muted); text-align: center; }
+    .add-section { margin-top: 20px; padding: 21px; }
+    .add-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    .add-heading h2 { margin: 0; font-size: 17px; letter-spacing: -.035em; }
+    .add-heading p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .question-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; margin-top: 20px; }
+    .question-form .span-two { grid-column: 1 / -1; }
+    .form-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
+    .form-actions { display: flex; align-items: center; gap: 10px; }
+    .form-status { min-height: 1.4em; margin: 9px 0 0; color: var(--green-dark); font-size: 11px; }
+    .form-status.is-error { color: var(--red); }
+    .source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 19px; }
+    .source-card { padding: 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .source-card .chip { margin-bottom: 8px; }
+    .source-card h3 { margin: 0; font-size: 13px; }
+    .source-card p { margin: 5px 0 10px; color: var(--muted); font-size: 11px; }
+    .source-card a { color: var(--green-dark); font-size: 11px; font-weight: 750; text-decoration: none; }
+    .source-card a:hover { text-decoration: underline; }
+    .note-box { margin-top: 15px; padding: 13px 15px; border: 1px solid #eee4d2; border-radius: 10px; color: #75613d; background: #fbf7ee; font-size: 11px; }
+    footer { padding: 1px 0 27px; color: #87928c; font-size: 10px; text-align: center; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+    @media (max-width: 800px) {
+      .study-grid { grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); }
+      .learn-grid { grid-template-columns: 1fr; }
+      .source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 30px, 1160px); }
+      .topbar { height: 66px; }
+      .top-note { max-width: 130px; text-align: right; }
+      .hero { align-items: start; padding: 34px 0 22px; }
+      .hero-count { display: none; }
+      .nav { overflow-x: auto; }
+      .nav button { flex: 0 0 auto; padding: 0 11px; }
+      .study-grid { grid-template-columns: 1fr; }
+      .filter-panel { padding: 17px; }
+      .filter-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 11px; }
+      .quiz-panel { min-height: 0; }
+      .quiz-head { align-items: start; flex-direction: column; padding: 16px 17px 12px; }
+      .question-body { padding: 21px 17px; }
+      .welcome-state, .finish-state { min-height: 290px; padding: 25px; }
+      .pathway-copy { grid-template-columns: 1fr; }
+      .guide-grid { grid-template-columns: 1fr; }
+      .localization-table th, .localization-table td { padding: 7px 6px; }
+      .library-tools { align-items: stretch; flex-direction: column; }
+      .search { width: 100%; }
+      .question-form, .form-options { grid-template-columns: 1fr; }
+      .question-form .span-two { grid-column: auto; }
+      .source-grid { grid-template-columns: 1fr; }
+      .add-heading { align-items: start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="Webpage%20for%20links.html" aria-label="Vestibular Research home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20V11m0 3c-4.2 0-7-2.4-7-6 4.4 0 7 2.2 7 6Zm0-3c0-4 2.7-6.5 7-6.5 0 4.1-2.6 6.5-7 6.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Vestibular Review
+    </a>
+    <span class="top-note">Neuro-otology study space</span>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Learn · retrieve · understand</p>
+        <h1>Know the pathways.<br>Trust the pattern.</h1>
+        <p class="hero-copy">A practical review space for vestibular disorders, eye movements, and neuro-otology. Start with a short quiz, then follow the anatomy behind the answer.</p>
+      </div>
+      <div class="hero-count" id="hero-count" aria-live="polite">Loading question bank…</div>
+    </section>
+
+    <nav class="nav" aria-label="Study sections">
+      <button type="button" data-view="study" aria-current="page">Study questions</button>
+      <button type="button" data-view="learn">Anatomy guide</button>
+      <button type="button" data-view="library">Question bank &amp; sources</button>
+    </nav>
+
+    <section class="view is-active" id="study-view" aria-label="Study questions">
+      <div class="study-grid">
+        <aside class="panel filter-panel">
+          <h2>Build a session</h2>
+          <p>Choose a system and level. Questions are shuffled for each session.</p>
+          <div class="filter-fields">
+            <label class="field">System
+              <select id="area-filter">
+                <option value="All">All systems</option>
+                <option value="Peripheral">Peripheral</option>
+                <option value="Central">Central</option>
+                <option value="Foundations">Foundations</option>
+              </select>
+            </label>
+            <label class="field">Topic
+              <select id="topic-filter"><option value="All">All topics</option></select>
+            </label>
+            <label class="field">Level
+              <select id="level-filter">
+                <option value="All">All levels</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert">Expert</option>
+              </select>
+            </label>
+          </div>
+          <p class="filter-count" id="filter-count" aria-live="polite"></p>
+          <button class="button button-primary full-button" id="start-button" type="button">Start a session</button>
+          <p class="source-note">Educational self-study only. Content is linked to published criteria and guidance; it is not patient-specific medical advice. Clinical references can change, so verify current local guidance.</p>
+        </aside>
+
+        <section class="panel quiz-panel" aria-label="Question session" aria-live="polite">
+          <div class="quiz-head">
+            <div class="quiz-meta" id="quiz-meta"></div>
+            <span class="progress-copy" id="progress-copy"></span>
+          </div>
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+          <div id="quiz-content"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="learn-view" aria-labelledby="learn-title">
+      <p class="learn-intro" id="learn-title">A simplified map of the vestibulo-ocular reflex (VOR) and the central connections that help stabilize gaze and posture.</p>
+      <div class="learn-grid">
+        <article class="panel anatomy-card">
+          <div class="panel-title">
+            <h2>Horizontal VOR: head turns right</h2>
+            <p>Eye movement is equal, opposite, and compensatory to head movement.</p>
+          </div>
+          <svg class="pathway-svg" viewBox="0 0 720 330" role="img" aria-labelledby="vor-title vor-desc">
+            <title id="vor-title">Simplified horizontal vestibulo-ocular reflex pathway</title>
+            <desc id="vor-desc">A rightward head turn activates the right horizontal canal and vestibular nerve. The right vestibular nucleus excites the left abducens nucleus, which drives the left lateral rectus and sends internuclear signals through the medial longitudinal fasciculus to the right oculomotor nucleus and right medial rectus. Both eyes move left.</desc>
+            <defs>
+              <marker id="arrow-head" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#47836a"/></marker>
+              <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#7298a0"/></marker>
+            </defs>
+            <rect x="14" y="36" width="132" height="58" rx="12" fill="#eaf3ee" stroke="#cfe1d5"/>
+            <text x="80" y="60" text-anchor="middle" fill="#245d49" font-size="13" font-weight="700">Right horizontal</text>
+            <text x="80" y="78" text-anchor="middle" fill="#60756a" font-size="11">canal · head turns →</text>
+            <rect x="177" y="36" width="135" height="58" rx="12" fill="#f5f8f6" stroke="#dfe8e2"/>
+            <text x="244" y="60" text-anchor="middle" fill="#33463c" font-size="13" font-weight="700">Right vestibular</text>
+            <text x="244" y="78" text-anchor="middle" fill="#60756a" font-size="11">nerve &amp; nucleus</text>
+            <rect x="367" y="36" width="137" height="58" rx="12" fill="#f5f8f6" stroke="#dfe8e2"/>
+            <text x="435" y="60" text-anchor="middle" fill="#33463c" font-size="13" font-weight="700">Left abducens</text>
+            <text x="435" y="78" text-anchor="middle" fill="#60756a" font-size="11">nucleus · CN VI</text>
+            <rect x="557" y="36" width="148" height="58" rx="12" fill="#eaf3ee" stroke="#cfe1d5"/>
+            <text x="631" y="60" text-anchor="middle" fill="#245d49" font-size="13" font-weight="700">Left lateral rectus</text>
+            <text x="631" y="78" text-anchor="middle" fill="#60756a" font-size="11">left eye abducts</text>
+            <path d="M148 65h23m141 0h48m146 0h45" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#arrow-head)"/>
+            <text x="337" y="52" fill="#74867d" font-size="10">excitation</text>
+            <rect x="247" y="191" width="150" height="58" rx="12" fill="#f5f8f6" stroke="#dfe8e2"/>
+            <text x="322" y="215" text-anchor="middle" fill="#33463c" font-size="13" font-weight="700">Right oculomotor</text>
+            <text x="322" y="233" text-anchor="middle" fill="#60756a" font-size="11">nucleus · CN III</text>
+            <rect x="488" y="191" width="148" height="58" rx="12" fill="#eaf3ee" stroke="#cfe1d5"/>
+            <text x="562" y="215" text-anchor="middle" fill="#245d49" font-size="13" font-weight="700">Right medial rectus</text>
+            <text x="562" y="233" text-anchor="middle" fill="#60756a" font-size="11">right eye adducts</text>
+            <path d="M435 95v69q0 27-25 27h-8" fill="none" stroke="#7298a0" stroke-width="2" marker-end="url(#arrow-blue)"/>
+            <text x="442" y="148" fill="#667f85" font-size="10">internuclear neuron via MLF</text>
+            <path d="M397 220h83" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#arrow-head)"/>
+            <rect x="249" y="280" width="386" height="29" rx="14" fill="#f3f7f4"/>
+            <text x="442" y="299" text-anchor="middle" fill="#476252" font-size="12" font-weight="700">Both eyes move left · gaze stays on target</text>
+          </svg>
+          <div class="pathway-copy">
+            <div class="mini-note">
+              <strong>Push–pull coding</strong>
+              <p>Turning the head right increases right canal firing and relatively decreases left canal firing.</p>
+            </div>
+            <div class="mini-note">
+              <strong>Paired eye movement</strong>
+              <p>Abducens motor neurons drive the left lateral rectus; internuclear fibers ascend in the MLF to the right medial rectus.</p>
+            </div>
+          </div>
+        </article>
+        <aside class="panel">
+          <div class="panel-title">
+            <h2>Beyond the three-neuron arc</h2>
+            <p>Vestibular nuclei connect to several systems.</p>
+          </div>
+          <div class="pathway-list">
+            <div class="pathway-item">
+              <h3>Vestibular nuclei ↔ cerebellum</h3>
+              <p>Flocculus, nodulus, and related regions help calibrate VOR gain and integrate vestibular, visual, and proprioceptive signals.</p>
+            </div>
+            <div class="pathway-item">
+              <h3>Ascending ocular motor pathways</h3>
+              <p>Projections to CN III, IV, and VI nuclei coordinate gaze; the MLF links abducens and oculomotor nuclei for horizontal gaze.</p>
+            </div>
+            <div class="pathway-item">
+              <h3>Descending vestibulospinal pathways</h3>
+              <p>Lateral and medial vestibulospinal tracts contribute to postural control, head stabilization, and balance responses.</p>
+            </div>
+            <div class="pathway-item">
+              <h3>Clinical localization</h3>
+              <p>Central ocular motor signs can arise from brainstem or cerebellar lesions; interpret findings with the full syndrome and examination.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <section class="guide-section" aria-labelledby="ocular-guide-heading">
+        <h2 id="ocular-guide-heading">Nystagmus &amp; ocular motor localization</h2>
+        <p>Read the slow phase, quick phase, gaze dependence, and associated signs together. These are localization clues, not stand-alone diagnoses.</p>
+        <div class="guide-grid">
+          <article class="panel guide-card">
+            <div class="panel-title">
+              <h2>Peripheral vestibular tone imbalance</h2>
+              <p>Example: acute unilateral loss on the left.</p>
+            </div>
+            <svg class="pathway-svg" viewBox="0 0 620 250" role="img" aria-labelledby="peripheral-nys-title peripheral-nys-desc">
+              <title id="peripheral-nys-title">Peripheral vestibular imbalance and spontaneous nystagmus</title>
+              <desc id="peripheral-nys-desc">Reduced left vestibular resting activity creates an imbalance interpreted as relative rightward head rotation. The slow phase drifts left, toward the lesioned side, and the corrective fast phase beats right, away from the lesioned side. Right gaze increases the fast-phase nystagmus in this example, illustrating Alexander's law.</desc>
+              <defs>
+                <marker id="nys-left-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#7298a0"/></marker>
+                <marker id="nys-right-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#47836a"/></marker>
+              </defs>
+              <rect x="20" y="27" width="140" height="56" rx="11" fill="#fbefed" stroke="#ead2ce"/>
+              <text x="90" y="51" text-anchor="middle" fill="#873b35" font-size="13" font-weight="700">Left vestibular</text>
+              <text x="90" y="69" text-anchor="middle" fill="#795c57" font-size="11">tone reduced</text>
+              <rect x="239" y="27" width="142" height="56" rx="11" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="310" y="51" text-anchor="middle" fill="#33463c" font-size="13" font-weight="700">Tonic imbalance</text>
+              <text x="310" y="69" text-anchor="middle" fill="#60756a" font-size="11">relative rightward signal</text>
+              <rect x="459" y="27" width="140" height="56" rx="11" fill="#eaf3ee" stroke="#cfe1d5"/>
+              <text x="529" y="51" text-anchor="middle" fill="#245d49" font-size="13" font-weight="700">Right-beating</text>
+              <text x="529" y="69" text-anchor="middle" fill="#60756a" font-size="11">nystagmus (named by fast phase)</text>
+              <path d="M163 55h67m153 0h66" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#nys-right-arrow)"/>
+              <text x="310" y="119" text-anchor="middle" fill="#52675c" font-size="12" font-weight="700">One cycle: slow drift left ← then corrective quick phase right →</text>
+              <path d="M507 165H285" fill="none" stroke="#7298a0" stroke-width="3" marker-end="url(#nys-left-arrow)"/>
+              <text x="397" y="154" text-anchor="middle" fill="#627c83" font-size="11">slow phase toward lesion</text>
+              <path d="M285 203H507" fill="none" stroke="#47836a" stroke-width="3" marker-end="url(#nys-right-arrow)"/>
+              <text x="397" y="225" text-anchor="middle" fill="#476252" font-size="11">fast phase away · determines direction name</text>
+            </svg>
+            <div class="guide-card-copy">
+              <p><strong>Why it beats:</strong> a unilateral reduction in resting vestibular input creates an asymmetric tonic signal. The brain interprets that imbalance as motion; the slow drift is the vestibular imbalance, and resetting saccades make the quick phases.</p>
+              <p><strong>Alexander’s law:</strong> in typical spontaneous peripheral vestibular nystagmus, intensity increases when looking in the direction of the fast phase (here, right gaze). This is a pattern, not a rule that proves a peripheral cause; central gaze-evoked nystagmus and mixed disorders can complicate interpretation.</p>
+              <div class="guide-callout">Direction is named by the fast phase. Fixation may damp some peripheral nystagmus; failure of fixation suppression can suggest central/cerebellar dysfunction, but neither observation should be used alone.</div>
+            </div>
+          </article>
+          <article class="panel guide-card">
+            <div class="panel-title">
+              <h2>Horizontal saccades &amp; gaze holding</h2>
+              <p>Fast gaze shifts need a pulse; maintaining eccentric gaze needs a neural integrator.</p>
+            </div>
+            <svg class="pathway-svg" viewBox="0 0 620 245" role="img" aria-labelledby="horizontal-local-title horizontal-local-desc">
+              <title id="horizontal-local-title">Horizontal saccade and gaze-holding brainstem pathways</title>
+              <desc id="horizontal-local-desc">Frontal eye fields and superior colliculus project to the contralateral pontine paramedian reticular formation, which drives the ipsilateral abducens nucleus. Abducens motor neurons activate the lateral rectus and internuclear neurons ascend in the MLF to the opposite oculomotor nucleus and medial rectus. The medial vestibular nucleus and nucleus prepositus hypoglossi contribute to the horizontal neural integrator.</desc>
+              <defs><marker id="local-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#47836a"/></marker></defs>
+              <rect x="15" y="27" width="130" height="53" rx="10" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="80" y="49" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">FEF / superior</text><text x="80" y="66" text-anchor="middle" fill="#60756a" font-size="11">colliculus</text>
+              <rect x="181" y="27" width="145" height="53" rx="10" fill="#eaf3ee" stroke="#cfe1d5"/>
+              <text x="253" y="49" text-anchor="middle" fill="#245d49" font-size="12" font-weight="700">PPRF</text><text x="253" y="66" text-anchor="middle" fill="#60756a" font-size="11">horizontal saccade burst</text>
+              <rect x="365" y="27" width="128" height="53" rx="10" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="429" y="49" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">Abducens</text><text x="429" y="66" text-anchor="middle" fill="#60756a" font-size="11">nucleus / CN VI</text>
+              <rect x="524" y="27" width="82" height="53" rx="10" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="565" y="49" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">Gaze</text><text x="565" y="66" text-anchor="middle" fill="#60756a" font-size="11">rightward</text>
+              <path d="M147 53h28m151 0h32m137 0h25" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#local-arrow)"/>
+              <text x="254" y="111" text-anchor="middle" fill="#627c83" font-size="11">MLF internuclear link → contralateral medial rectus</text>
+              <rect x="117" y="145" width="166" height="55" rx="10" fill="#f8f2e6" stroke="#ecdfc6"/>
+              <text x="200" y="168" text-anchor="middle" fill="#80602e" font-size="12" font-weight="700">NPH + medial vestibular</text><text x="200" y="185" text-anchor="middle" fill="#806b49" font-size="11">horizontal neural integrator</text>
+              <rect x="365" y="145" width="191" height="55" rx="10" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="460" y="168" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">Hold eccentric gaze</text><text x="460" y="185" text-anchor="middle" fill="#60756a" font-size="11">leak → gaze-evoked drift / nystagmus</text>
+              <path d="M287 173h70" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#local-arrow)"/>
+            </svg>
+            <div class="guide-card-copy">
+              <p><strong>PPRF:</strong> a horizontal saccade generator in the pons drives ipsilateral gaze through the abducens nucleus. A destructive lesion often impairs saccades toward the lesion, but acute pontine lesions can also affect vestibular and internuclear pathways.</p>
+              <p><strong>Horizontal gaze holding:</strong> nucleus prepositus hypoglossi (NPH) and medial vestibular nucleus contribute to the neural integrator. A leaky integrator lets the eye drift back toward center, producing gaze-evoked nystagmus.</p>
+            </div>
+          </article>
+          <article class="panel guide-card">
+            <div class="panel-title">
+              <h2>Vertical saccades &amp; gaze holding</h2>
+              <p>Vertical and torsional fast eye movements localize to the rostral midbrain network.</p>
+            </div>
+            <svg class="pathway-svg" viewBox="0 0 620 230" role="img" aria-labelledby="vertical-local-title vertical-local-desc">
+              <title id="vertical-local-title">Vertical saccade and gaze-holding pathways</title>
+              <desc id="vertical-local-desc">The rostral interstitial nucleus of the medial longitudinal fasciculus generates vertical and torsional saccadic bursts. The interstitial nucleus of Cajal acts as a vertical and torsional neural integrator. Posterior commissure pathways are important for upgaze. The oculomotor and trochlear nuclear complex executes vertical eye movement.</desc>
+              <defs><marker id="vertical-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#47836a"/></marker></defs>
+              <rect x="22" y="42" width="152" height="58" rx="11" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="98" y="66" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">Posterior commissure</text><text x="98" y="84" text-anchor="middle" fill="#60756a" font-size="11">upgaze pathways</text>
+              <rect x="225" y="30" width="168" height="70" rx="11" fill="#eaf3ee" stroke="#cfe1d5"/>
+              <text x="309" y="58" text-anchor="middle" fill="#245d49" font-size="13" font-weight="700">riMLF</text><text x="309" y="78" text-anchor="middle" fill="#60756a" font-size="11">vertical / torsional saccade burst</text>
+              <rect x="443" y="42" width="153" height="58" rx="11" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="519" y="66" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">CN III / IV complex</text><text x="519" y="84" text-anchor="middle" fill="#60756a" font-size="11">extraocular motor output</text>
+              <path d="M175 70h42m180 0h39" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#vertical-arrow)"/>
+              <rect x="182" y="145" width="178" height="55" rx="11" fill="#f8f2e6" stroke="#ecdfc6"/>
+              <text x="271" y="168" text-anchor="middle" fill="#80602e" font-size="12" font-weight="700">Interstitial nucleus of Cajal</text><text x="271" y="185" text-anchor="middle" fill="#806b49" font-size="11">vertical / torsional integrator</text>
+              <rect x="407" y="145" width="189" height="55" rx="11" fill="#f5f8f6" stroke="#dfe8e2"/>
+              <text x="501" y="168" text-anchor="middle" fill="#33463c" font-size="12" font-weight="700">Hold vertical gaze</text><text x="501" y="185" text-anchor="middle" fill="#60756a" font-size="11">dysfunction → vertical gaze-evoked drift</text>
+              <path d="M363 172h37" fill="none" stroke="#47836a" stroke-width="2" marker-end="url(#vertical-arrow)"/>
+            </svg>
+            <div class="guide-card-copy">
+              <p><strong>riMLF:</strong> the rostral interstitial nucleus of the MLF contains burst neurons for vertical and torsional saccades. Lesions may cause slowed or hypometric vertical saccades; patterns depend on lesion extent.</p>
+              <p><strong>INC and posterior commissure:</strong> the interstitial nucleus of Cajal helps hold vertical/torsional gaze. Posterior commissure involvement classically disrupts upgaze pathways, but vertical gaze palsy has multiple possible causes.</p>
+            </div>
+          </article>
+          <article class="panel guide-card">
+            <div class="panel-title">
+              <h2>Slow eye movements: what do they test?</h2>
+              <p>Separate pursuit, VOR, and gaze holding before localizing a deficit.</p>
+            </div>
+            <div class="pathway-list">
+              <div class="pathway-item"><h3>Smooth pursuit</h3><p>Tracks a moving visual target. Distributed cortical visual-motion networks (including MT/MST and frontal eye fields) project through pontine relays and cerebellum to ocular motor/vestibular pathways. Pursuit is age-, attention-, and speed-dependent; asymmetry can support but rarely uniquely localizes.</p></div>
+              <div class="pathway-item"><h3>VOR slow phase</h3><p>Stabilizes gaze during head movement. Peripheral labyrinth/nerve, vestibular nuclei, ocular motor nuclei, and cerebellar calibration contribute. An impaired VOR can be peripheral or central; interpret alongside head impulse, nystagmus, and other signs.</p></div>
+              <div class="pathway-item"><h3>Gaze holding</h3><p>Neural integrators convert a brief saccadic command into sustained eccentric eye position. Horizontal: NPH and medial vestibular nucleus. Vertical/torsional: interstitial nucleus of Cajal. Integrator dysfunction gives centripetal drift, often with corrective gaze-evoked nystagmus.</p></div>
+              <div class="pathway-item"><h3>Ocular motor localization clues</h3><table class="localization-table"><thead><tr><th>Finding</th><th>Structures to consider</th></tr></thead><tbody><tr><td>Impaired horizontal saccades</td><td>PPRF, abducens nucleus, MLF, or supranuclear inputs; distinguish conjugate gaze palsy from internuclear ophthalmoplegia.</td></tr><tr><td>Impaired vertical saccades</td><td>riMLF and rostral midbrain networks; assess up- and downgaze separately.</td></tr><tr><td>Gaze-evoked nystagmus</td><td>Neural integrator, cerebellum, drugs, or other central causes; clinical context matters.</td></tr><tr><td>Impaired pursuit</td><td>Distributed visual, cortical, pontine, and cerebellar networks; not a single-site localizer.</td></tr></tbody></table></div>
+              <div class="guide-callout">A bedside ocular motor sign is not a diagnosis. Consider visual acuity, attention, age, medications, direction and velocity of the slow phase, and the rest of the neurologic examination.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <p class="anatomy-disclaimer">Schematic only; pathway anatomy is simplified and individual responses depend on gaze, frequency, and intact central compensation.</p>
+    </section>
+
+    <section class="view" id="library-view" aria-labelledby="bank-title">
+      <div class="library-tools">
+        <h2 id="bank-title">Question bank</h2>
+        <label><span class="sr-only">Search the question bank</span><input class="search" id="bank-search" type="search" placeholder="Search topics or questions…" autocomplete="off"></label>
+      </div>
+      <div class="question-list" id="question-list" aria-live="polite"></div>
+
+      <section class="panel add-section" aria-labelledby="add-title">
+        <div class="add-heading">
+          <div>
+            <h2 id="add-title">Add your own question</h2>
+            <p>Your additions are saved in this browser and included in matching sessions.</p>
+          </div>
+          <button class="button button-quiet" id="export-button" type="button">Export my questions</button>
+        </div>
+        <form class="question-form" id="question-form">
+          <label class="field span-two">Question
+            <textarea id="new-prompt" maxlength="500" required placeholder="Write a focused clinical or anatomy question"></textarea>
+          </label>
+          <label class="field">System
+            <select id="new-area"><option>Peripheral</option><option>Central</option><option>Foundations</option></select>
+          </label>
+          <label class="field">Topic
+            <input id="new-topic" maxlength="60" required placeholder="e.g. BPPV, nystagmus">
+          </label>
+          <label class="field">Level
+            <select id="new-level"><option>Beginner</option><option>Intermediate</option><option>Expert</option></select>
+          </label>
+          <label class="field">Question type
+            <select id="new-type"><option value="multiple">Multiple choice</option><option value="boolean">True / false</option></select>
+          </label>
+          <div class="span-two" id="choice-fields">
+            <div class="form-options">
+              <label class="field">Option A<input id="choice-a" maxlength="180" required></label>
+              <label class="field">Option B<input id="choice-b" maxlength="180" required></label>
+              <label class="field">Option C<input id="choice-c" maxlength="180" required></label>
+              <label class="field">Option D<input id="choice-d" maxlength="180" required></label>
+            </div>
+          </div>
+          <label class="field span-two">Correct answer
+            <select id="new-answer"><option value="0">Option A</option><option value="1">Option B</option><option value="2">Option C</option><option value="3">Option D</option></select>
+          </label>
+          <label class="field span-two">Explanation
+            <textarea id="new-explanation" maxlength="1000" required placeholder="Explain why the answer is correct and add important nuance"></textarea>
+          </label>
+          <label class="field">Reference (recommended)
+            <input id="new-source-title" maxlength="160" placeholder="Guideline, paper, or resource">
+          </label>
+          <label class="field">Reference URL
+            <input id="new-source-url" type="url" placeholder="https://…">
+          </label>
+          <div class="form-actions span-two">
+            <button class="button button-primary" type="submit">Save question</button>
+            <button class="button button-quiet" id="clear-custom-button" type="button">Clear my questions</button>
+          </div>
+        </form>
+        <p class="form-status" id="form-status" role="status"></p>
+      </section>
+
+      <h2 style="margin:28px 0 0;font-size:18px;letter-spacing:-.035em">Reference shelf</h2>
+      <p class="learn-intro">Starter questions link to sources; check original publications for full criteria and updates.</p>
+      <div class="source-grid">
+        <article class="source-card"><span class="chip">Danish guidance</span><h3>nNBV · Dansk Neurologisk Selskab</h3><p>National neurology guidance resource. Use the relevant current topic pages and local guidance when applicable.</p><a href="https://nnbv.dk/" target="_blank" rel="noopener noreferrer">Visit nNBV ↗</a></article>
+        <article class="source-card"><span class="chip">Professional society</span><h3>European Academy of Neurology</h3><p>Clinical and educational resources from the European neurology society.</p><a href="https://www.ean.org/" target="_blank" rel="noopener noreferrer">Visit EAN ↗</a></article>
+        <article class="source-card"><span class="chip">Consensus criteria</span><h3>Vestibular migraine</h3><p>Lempert T, et al. Vestibular migraine: diagnostic criteria (Update). J Vestib Res. 2022.</p><a href="https://doi.org/10.3233/VES-201644" target="_blank" rel="noopener noreferrer">Read the paper ↗</a></article>
+        <article class="source-card"><span class="chip">Consensus criteria</span><h3>Menière’s disease</h3><p>Lopez-Escamez JA, et al. Diagnostic criteria for Menière’s disease. J Vestib Res. 2015.</p><a href="https://doi.org/10.3233/VES-150549" target="_blank" rel="noopener noreferrer">Read the paper ↗</a></article>
+        <article class="source-card"><span class="chip">Consensus criteria</span><h3>Superior canal dehiscence</h3><p>Ward BK, et al. Superior semicircular canal dehiscence syndrome: diagnostic criteria. J Vestib Res. 2021.</p><a href="https://doi.org/10.3233/VES-200004" target="_blank" rel="noopener noreferrer">Read the paper ↗</a></article>
+        <article class="source-card"><span class="chip">Consensus criteria</span><h3>Acute unilateral vestibulopathy</h3><p>Strupp M, et al. Acute unilateral vestibulopathy/vestibular neuritis: diagnostic criteria. J Vestib Res. 2022.</p><a href="https://doi.org/10.3233/VES-220201" target="_blank" rel="noopener noreferrer">Read the paper ↗</a></article>
+        <article class="source-card"><span class="chip">Clinical practice guideline</span><h3>Benign paroxysmal positional vertigo</h3><p>Bhattacharyya N, et al. Clinical Practice Guideline: Benign Paroxysmal Positional Vertigo (Update). Otolaryngol Head Neck Surg. 2017.</p><a href="https://doi.org/10.1177/0194599816689667" target="_blank" rel="noopener noreferrer">Read the guideline ↗</a></article>
+        <article class="source-card"><span class="chip">Consensus criteria</span><h3>Superior canal diagnostic framework</h3><p>Bárány Society consensus on symptom, physiologic, and imaging evidence for SCDS.</p><a href="https://doi.org/10.3233/VES-200004" target="_blank" rel="noopener noreferrer">View consensus criteria ↗</a></article>
+        <article class="source-card"><span class="chip">Acute vestibular syndrome</span><h3>HINTS and stroke</h3><p>Kattah JC, et al. HINTS to diagnose stroke in the acute vestibular syndrome. Stroke. 2009.</p><a href="https://doi.org/10.1161/STROKEAHA.109.551234" target="_blank" rel="noopener noreferrer">Read the paper ↗</a></article>
+      </div>
+      <div class="note-box">The starter set is a manually authored educational bank, not automatically generated from a live source feed. User-created questions remain local to this browser; export a JSON backup before clearing browser data.</div>
+    </section>
+  </main>
+  <footer class="shell">Vestibular Review · Independent educational resource · Verify clinical decisions against current professional guidance.</footer>
+
+  <script>
+    const starterQuestions = [
+      {
+        id: "bppv-posterior-pattern", topic: "BPPV", area: "Peripheral", level: "Beginner", type: "multiple",
+        prompt: "During a right Dix–Hallpike test, which nystagmus pattern most strongly supports right posterior-canal canalithiasis?",
+        choices: ["Brief upbeat-torsional nystagmus, with the upper poles beating toward the right (dependent) ear", "Pure downbeat nystagmus lasting several minutes", "Direction-changing gaze-evoked nystagmus", "Pure vertical nystagmus that is unchanged by position"],
+        answer: 0, explanation: "Posterior-canal BPPV classically produces a brief, position-triggered upbeat-torsional nystagmus; the torsional component beats toward the affected, undermost ear. Interpret the complete pattern and history, not a single sign alone.",
+        source: { title: "BPPV clinical practice guideline update (2017)", url: "https://doi.org/10.1177/0194599816689667" }
+      },
+      {
+        id: "bppv-epley", topic: "BPPV", area: "Peripheral", level: "Intermediate", type: "multiple",
+        prompt: "For right posterior-canal BPPV, after the right Dix–Hallpike position, what is the next usual step in the Epley canalith-repositioning sequence?",
+        choices: ["Turn the head 90° toward the left while remaining supine", "Sit up immediately without changing head position", "Turn the head 90° toward the right", "Extend the neck further and hold for 10 minutes"],
+        answer: 0, explanation: "The usual Epley sequence for right posterior-canal BPPV proceeds from right Dix–Hallpike to a 90° turn toward the left, then a roll onto the left side with the nose angled down, and finally sitting up. Follow appropriate safety adaptations and local protocols.",
+        source: { title: "BPPV clinical practice guideline update (2017)", url: "https://doi.org/10.1177/0194599816689667" }
+      },
+      {
+        id: "bppv-central-redflags", topic: "BPPV", area: "Central", level: "Expert", type: "multiple",
+        prompt: "Which finding in a patient with positional vertigo should increase concern for a central positional nystagmus rather than typical posterior-canal BPPV?",
+        choices: ["Reproducible, brief upbeat-torsional nystagmus in the right Dix–Hallpike position", "Persistent pure downbeat positional nystagmus without the expected canal-specific pattern", "A short latency before familiar positional vertigo", "Fatigability of a typical positional response"],
+        answer: 1, explanation: "Persistent, pure vertical or otherwise atypical positional nystagmus can indicate central pathology and merits careful assessment. No single feature is definitive; consider the full neurologic examination, history, and appropriate investigation.",
+        source: { title: "BPPV clinical practice guideline update (2017)", url: "https://doi.org/10.1177/0194599816689667" }
+      },
+      {
+        id: "neuritis-syndrome", topic: "Vestibular neuritis", area: "Peripheral", level: "Beginner", type: "multiple",
+        prompt: "Which presentation best fits acute unilateral vestibulopathy (vestibular neuritis) in its typical form?",
+        choices: ["Brief vertigo only when rolling in bed, with no symptoms between attacks", "Acute, sustained vertigo with peripheral vestibular signs and no acute hearing loss", "Recurrent vertigo with fluctuating hearing loss and tinnitus", "Sound-induced vertigo with autophony"],
+        answer: 1, explanation: "Acute unilateral vestibulopathy typically presents as an acute vestibular syndrome with sustained vertigo and unilateral peripheral vestibular hypofunction, without acute cochlear symptoms. New hearing loss changes the differential and requires assessment.",
+        source: { title: "Acute unilateral vestibulopathy diagnostic criteria (2022)", url: "https://doi.org/10.3233/VES-220201" }
+      },
+      {
+        id: "neuritis-exam", topic: "Vestibular neuritis", area: "Peripheral", level: "Intermediate", type: "multiple",
+        prompt: "In an appropriate acute vestibular syndrome, which combination is more consistent with a unilateral peripheral vestibular lesion?",
+        choices: ["Normal bilateral horizontal head impulse, direction-changing gaze-evoked nystagmus, and skew", "Abnormal head impulse toward the affected side, direction-fixed horizontal-torsional nystagmus, and no skew", "Pure vertical nystagmus with severe truncal ataxia", "New focal weakness with direction-changing nystagmus"],
+        answer: 1, explanation: "An ipsilesional abnormal head impulse, direction-fixed peripheral-pattern nystagmus, and absent skew are compatible with unilateral peripheral hypofunction. HINTS is intended for selected patients with acute vestibular syndrome and must be performed by a trained clinician; it is not a general dizziness screen and does not replace clinical judgment.",
+        source: { title: "HINTS in acute vestibular syndrome (2009)", url: "https://doi.org/10.1161/STROKEAHA.109.551234" }
+      },
+      {
+        id: "menieres-duration", topic: "Menière’s disease", area: "Peripheral", level: "Beginner", type: "multiple",
+        prompt: "Under the consensus criteria, what is the typical duration range for an individual episode of vertigo in definite Menière’s disease?",
+        choices: ["Seconds, only with a specific head position", "20 minutes to 12 hours", "12 to 48 hours only", "Continuous for longer than one month"],
+        answer: 1, explanation: "Definite Menière’s disease includes episodic vertigo lasting 20 minutes to 12 hours, with documented low- to mid-frequency sensorineural hearing loss and fluctuating aural symptoms in the affected ear. Full diagnostic criteria include additional requirements.",
+        source: { title: "Menière’s disease diagnostic criteria (2015)", url: "https://doi.org/10.3233/VES-150549" }
+      },
+      {
+        id: "menieres-audiometry", topic: "Menière’s disease", area: "Peripheral", level: "Intermediate", type: "boolean",
+        prompt: "For definite Menière’s disease, the consensus criteria include audiometrically documented low- to mid-frequency sensorineural hearing loss in the affected ear.",
+        choices: ["True", "False"],
+        answer: 0, explanation: "True. The consensus criteria include documented low- to mid-frequency sensorineural hearing loss in the affected ear, along with the specified episodic vertigo and fluctuating aural symptoms.",
+        source: { title: "Menière’s disease diagnostic criteria (2015)", url: "https://doi.org/10.3233/VES-150549" }
+      },
+      {
+        id: "vm-criteria", topic: "Vestibular migraine", area: "Peripheral", level: "Intermediate", type: "multiple",
+        prompt: "Which statement best summarizes the episode-count and duration elements of vestibular migraine criteria?",
+        choices: ["At least one episode lasting more than 30 days", "At least five moderate or severe vestibular episodes, each lasting 5 minutes to 72 hours", "Exactly two episodes, each lasting under 1 minute", "Daily symptoms for one year are required"],
+        answer: 1, explanation: "The criteria require at least five episodes of moderate or severe vestibular symptoms, with episode duration from 5 minutes to 72 hours. Other criteria include a current or previous migraine history and migraine features during at least half of episodes.",
+        source: { title: "Vestibular migraine diagnostic criteria update (2022)", url: "https://doi.org/10.3233/VES-201644" }
+      },
+      {
+        id: "vm-feature-frequency", topic: "Vestibular migraine", area: "Peripheral", level: "Expert", type: "truefalse",
+        prompt: "In the vestibular migraine criteria, migraine features (such as qualifying headache, photophobia with phonophobia, or visual aura) must occur during at least half of vestibular episodes.",
+        choices: ["True", "False"],
+        answer: 0, explanation: "True. At least one qualifying migraine feature must be present during at least 50% of vestibular episodes, in addition to the other diagnostic criteria.",
+        source: { title: "Vestibular migraine diagnostic criteria update (2022)", url: "https://doi.org/10.3233/VES-201644" }
+      },
+      {
+        id: "scds-framework", topic: "SCDS", area: "Peripheral", level: "Expert", type: "multiple",
+        prompt: "Which best describes the Bárány Society diagnostic framework for superior semicircular canal dehiscence syndrome (SCDS)?",
+        choices: ["A dehiscence visible on CT alone is sufficient", "At least one compatible symptom, one physiologic sign/test, and high-resolution CT evidence are required", "Autophony alone establishes the diagnosis", "A normal CT is expected and required"],
+        answer: 1, explanation: "The consensus requires evidence across symptom, physiologic, and imaging domains. A CT finding alone is not enough because apparent dehiscence can occur in people without the syndrome and imaging can overcall thin bone.",
+        source: { title: "SCDS diagnostic criteria (2021)", url: "https://doi.org/10.3233/VES-200004" }
+      },
+      {
+        id: "scds-triggers", topic: "SCDS", area: "Peripheral", level: "Beginner", type: "multiple",
+        prompt: "Which symptom is characteristic of a third-window disorder such as SCDS?",
+        choices: ["Sound- or pressure-induced vertigo or oscillopsia", "Vertigo exclusively when turning over in bed", "Progressive diplopia without auditory symptoms", "Brief loss of consciousness on standing"],
+        answer: 0, explanation: "Sound- or pressure-induced vestibular symptoms, bone-conduction hyperacusis, or pulsatile tinnitus can occur in SCDS. Diagnosis requires the complete consensus framework, not symptoms alone.",
+        source: { title: "SCDS diagnostic criteria (2021)", url: "https://doi.org/10.3233/VES-200004" }
+      },
+      {
+        id: "central-gaze-nystagmus", topic: "Nystagmus", area: "Central", level: "Beginner", type: "multiple",
+        prompt: "Which ocular motor finding is a central pattern and should not be labeled as a typical unilateral peripheral vestibular nystagmus?",
+        choices: ["Direction-fixed horizontal-torsional spontaneous nystagmus", "Direction-changing gaze-evoked nystagmus", "A small corrective saccade on head impulse toward one side", "Reduced vestibulo-ocular reflex gain on one side"],
+        answer: 1, explanation: "Direction-changing gaze-evoked nystagmus is a central ocular motor sign. Peripheral disorders can have other nystagmus patterns; interpret eye movements in context and assess for other neurologic signs.",
+        source: { title: "HINTS in acute vestibular syndrome (2009)", url: "https://doi.org/10.1161/STROKEAHA.109.551234" }
+      },
+      {
+        id: "central-vor-pathway", topic: "Central vestibular pathways", area: "Foundations", level: "Intermediate", type: "multiple",
+        prompt: "During a rightward head turn, which excitatory pathway helps drive the compensatory horizontal eye movement?",
+        choices: ["Right vestibular nucleus → left abducens nucleus → left lateral rectus, with internuclear fibers via the MLF to right oculomotor neurons", "Right vestibular nucleus → right abducens nucleus only", "Left vestibular nucleus → bilateral trochlear nuclei", "Vestibular nerve → optic chiasm → both medial recti"],
+        answer: 0, explanation: "The right horizontal canal signals a rightward head turn. Vestibular pathways excite the contralateral abducens nucleus; internuclear neurons ascend in the medial longitudinal fasciculus to the ipsilateral oculomotor nucleus, coordinating conjugate leftward gaze.",
+        source: { title: "Bárány Society vestibular consensus papers", url: "https://doi.org/10.3233/VES-220201" }
+      },
+      {
+        id: "vor-function", topic: "VOR", area: "Foundations", level: "Beginner", type: "truefalse",
+        prompt: "The vestibulo-ocular reflex helps keep an image stable on the retina by moving the eyes in the opposite direction to a head movement.",
+        choices: ["True", "False"],
+        answer: 0, explanation: "True. For a rightward head movement, the horizontal VOR drives the eyes leftward to help maintain gaze on the target.",
+        source: { title: "Acute unilateral vestibulopathy diagnostic criteria (2022)", url: "https://doi.org/10.3233/VES-220201" }
+      }
+    ];
+
+    const questionSources = {
+      bppv: { title: "BPPV clinical practice guideline update (2017)", url: "https://doi.org/10.1177/0194599816689667" },
+      auv: { title: "Acute unilateral vestibulopathy diagnostic criteria (2022)", url: "https://doi.org/10.3233/VES-220201" },
+      meniere: { title: "Menière’s disease diagnostic criteria (2015)", url: "https://doi.org/10.3233/VES-150549" },
+      migraine: { title: "Vestibular migraine diagnostic criteria update (2022)", url: "https://doi.org/10.3233/VES-201644" },
+      scds: { title: "SCDS diagnostic criteria (2021)", url: "https://doi.org/10.3233/VES-200004" },
+      ocular: { title: "Central ocular motor disorders: clinical examination and diagnosis (2011)", url: "https://doi.org/10.3238/arztebl.2011.0197" },
+      hints: { title: "HINTS in acute vestibular syndrome (2009)", url: "https://doi.org/10.1161/STROKEAHA.109.551234" }
+    };
+    const clinicalDistractors = {
+      "BPPV": [
+        "Supine roll testing for horizontal-canal positional nystagmus",
+        "Brief upbeat-torsional nystagmus on the affected-side Dix–Hallpike test",
+        "Persistent downbeat positional nystagmus requiring assessment for a central cause",
+        "An abnormal head impulse with corrective saccades toward one side",
+        "Spontaneous vertigo episodes with fluctuating unilateral aural symptoms",
+        "Vertigo or oscillopsia provoked by sound or pressure",
+        "A canalith-repositioning maneuver selected for the affected canal",
+        "Direction-changing gaze-evoked nystagmus on eccentric gaze"
+      ],
+      "Vestibular neuritis": [
+        "Acute sustained vestibular symptoms with unilateral peripheral hypofunction",
+        "Brief position-triggered episodes with canal-specific positional nystagmus",
+        "Recurrent vertigo with fluctuating hearing loss, tinnitus, or aural fullness",
+        "Sound- or pressure-induced vertigo with bone-conduction hyperacusis",
+        "A corrective saccade after head rotation toward the hypofunctioning side",
+        "New acute hearing loss prompting consideration of other diagnoses",
+        "Unidirectional horizontal-torsional spontaneous nystagmus",
+        "Individually dosed gaze-stability and balance rehabilitation"
+      ],
+      "Menière’s disease": [
+        "Spontaneous vertigo episodes with fluctuating aural symptoms in one ear",
+        "Audiometrically documented low- to mid-frequency sensorineural hearing loss",
+        "A brief triggered positional spell lasting only seconds",
+        "Visually induced vertigo with migraine features during episodes",
+        "Sound- or pressure-triggered symptoms with enhanced VEMP responses",
+        "Acute continuous vertigo without acute cochlear symptoms",
+        "A single episode without documented hearing change",
+        "Aural symptoms alone without the required episodic vestibular pattern"
+      ],
+      "Vestibular migraine": [
+        "At least five moderate or severe qualifying vestibular episodes",
+        "Episodes lasting from 5 minutes to 72 hours",
+        "A current or past history of migraine",
+        "Qualifying migraine features during at least half of vestibular episodes",
+        "Visually induced vertigo or head-motion-induced dizziness with nausea",
+        "Documented low- to mid-frequency hearing loss as a required criterion",
+        "A single confirmatory vestibular laboratory biomarker",
+        "Seconds-long positional attacks as the only qualifying symptom pattern"
+      ],
+      "SCDS": [
+        "Sound- or pressure-induced vestibular symptoms",
+        "Autophony or bone-conduction hyperacusis",
+        "Enhanced VEMP responses consistent with a third-window effect",
+        "High-resolution temporal-bone CT in appropriate canal planes",
+        "A CT finding without compatible symptoms or physiologic evidence",
+        "Brief position-triggered vertigo with typical canal-specific nystagmus",
+        "Fluctuating low-frequency hearing loss with spontaneous vertigo episodes",
+        "A symptom, physiologic, and imaging evidence framework"
+      ],
+      "Peripheral nystagmus": [
+        "The quick phase determines the conventional direction name",
+        "A slow drift toward the side of reduced vestibular tone",
+        "A quick corrective phase away from the less active side",
+        "Greater intensity when gaze is directed toward the fast phase",
+        "Possible reduction of intensity with visual fixation",
+        "Direction-changing gaze-evoked nystagmus on eccentric gaze",
+        "Persistent pure downbeat nystagmus in primary position",
+        "A slow phase followed by a resetting quick phase"
+      ],
+      "Central nystagmus": [
+        "Direction-changing gaze-evoked nystagmus",
+        "Persistent downbeat nystagmus in primary position",
+        "A slow centripetal drift with corrective quick phases on eccentric gaze",
+        "Skew deviation from an imbalance in central otolith-ocular pathways",
+        "Possible impaired fixation suppression with cerebellar dysfunction",
+        "Typical brief upbeat-torsional nystagmus on a canal-specific positional test",
+        "An ipsilesional corrective saccade on a high-frequency head impulse",
+        "An ocular motor sign that requires interpretation with the full examination"
+      ],
+      "Horizontal saccades": [
+        "PPRF burst activity for ipsilateral horizontal saccades",
+        "Abducens motor output to the ipsilateral lateral rectus",
+        "Abducens internuclear neurons ascending in the contralateral MLF",
+        "An MLF lesion causing impaired adduction with abducting nystagmus",
+        "Contralateral saccades driven by frontal eye field activation",
+        "Rostral interstitial nucleus activity for vertical saccades",
+        "NPH and medial vestibular nucleus contributions to horizontal gaze holding",
+        "A leaky integrator producing centripetal drift during eccentric gaze"
+      ],
+      "Vertical saccades": [
+        "riMLF burst neurons for vertical and torsional saccades",
+        "INC contributions to vertical and torsional gaze holding",
+        "Posterior commissure pathways important for upgaze",
+        "Dorsal midbrain signs accompanying impaired upgaze",
+        "PPRF burst activity for horizontal saccades",
+        "NPH contributions to horizontal gaze holding",
+        "A canalith-repositioning maneuver for posterior-canal BPPV",
+        "A vertical saccade deficit interpreted with the full midbrain examination"
+      ],
+      "Gaze holding": [
+        "NPH and medial vestibular nucleus contributions to horizontal gaze holding",
+        "INC contributions to vertical and torsional gaze holding",
+        "Centripetal drift with corrective quick phases during eccentric gaze",
+        "Cerebellar flocculus and paraflocculus modulation",
+        "riMLF burst neurons generating vertical saccades",
+        "PPRF burst neurons generating horizontal saccades",
+        "Medication or physiologic end-gaze effects as possible contributors",
+        "A distributed neural integrator rather than a single ocular motor nerve"
+      ],
+      "Smooth pursuit": [
+        "Following a moving visual target while minimizing retinal slip",
+        "Catch-up saccades when pursuit lags behind its target",
+        "Distributed cortical visual-motion, pontine, and cerebellar pathways",
+        "Sensitivity to age, alertness, attention, and visual conditions",
+        "High-frequency canal VOR responses measured by head impulse",
+        "A single brainstem nucleus as the exclusive pursuit generator",
+        "A distributed function that is limited as a stand-alone lesion localizer",
+        "Pursuit and VOR testing sampling different eye-movement systems"
+      ],
+      "VOR": [
+        "Canal afferents projecting through vestibular nuclei to ocular motor nuclei",
+        "Compensatory eye movement opposite to head movement",
+        "Corrective catch-up saccades after inadequate gaze stabilization",
+        "Cerebellar flocculus participation in adaptive VOR calibration",
+        "vHIT sampling high-frequency canal responses",
+        "Caloric testing sampling a much lower-frequency canal response",
+        "Smooth pursuit following a moving visual target",
+        "Otolith contributions to linear acceleration and gravity-related responses"
+      ],
+      "Central vestibular pathways": [
+        "MLF internuclear connections among ocular motor nuclei",
+        "Vestibulocerebellar modulation of VOR and gaze responses",
+        "Otolith input related to linear acceleration and head tilt",
+        "Vestibulospinal contributions to posture and head-body stabilization",
+        "PPRF participation in horizontal saccade generation",
+        "riMLF participation in vertical saccade generation",
+        "Cerebellar contributions to gaze holding and fixation suppression",
+        "Central otolith-ocular pathways contributing to skew"
+      ],
+      "Acute vestibular syndrome": [
+        "Acute-onset, continuous vertigo with spontaneous nystagmus and gait unsteadiness",
+        "Brief triggered episodes that stop between positional changes",
+        "A normal head impulse as a possible central warning sign in the correct syndrome",
+        "New unilateral hearing loss as a reason to consider HINTS-plus",
+        "Severe truncal instability as a concerning central feature",
+        "HINTS use restricted to an appropriate acute vestibular syndrome and trained examiners",
+        "Focal neurologic findings outweighing reassurance from one isolated bedside sign",
+        "A recurrent episodic syndrome without ongoing spontaneous nystagmus"
+      ]
+    };
+
+    function selectClinicalDistractors(topic, correctChoice, questionId) {
+      const pool = (clinicalDistractors[topic] || []).filter(choice => choice !== correctChoice);
+      const hash = [...questionId].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 7);
+      const start = pool.length ? hash % pool.length : 0;
+      const selected = [];
+      for (let offset = 0; offset < pool.length && selected.length < 3; offset++) {
+        const choice = pool[(start + offset) % pool.length];
+        if (!selected.includes(choice)) selected.push(choice);
+      }
+      return selected.length === 3 ? selected : null;
+    }
+
+    const additionalQuestionRows = [
+      ["bppv-latency", "BPPV", "Peripheral", "Beginner", "multiple", "Which bedside history is most characteristic of canalithiasis-type BPPV?", "Brief, position-triggered spells when rolling over or looking up", ["Continuous vertigo for several days without positional triggers", "Vertigo only after loud sounds", "Progressive imbalance without episodes"], 0, "BPPV typically causes brief episodes provoked by changes in head position relative to gravity. The history should guide positional testing; symptoms alone do not identify the involved canal.", "bppv"],
+      ["bppv-dixhallpike", "BPPV", "Peripheral", "Beginner", "multiple", "Which canal is primarily tested by the Dix–Hallpike maneuver?", "Posterior semicircular canal", ["Horizontal semicircular canal only", "Saccule", "Anterior vestibular nerve"], 0, "The Dix–Hallpike test is used to diagnose posterior-canal BPPV. If the history is compatible but Dix–Hallpike produces horizontal or no nystagmus, perform a supine roll test as appropriate.", "bppv"],
+      ["bppv-rolltest", "BPPV", "Peripheral", "Intermediate", "multiple", "A patient has brief positional vertigo and horizontal positional nystagmus. Which test is most appropriate to assess horizontal-canal BPPV?", "Supine roll test", ["Head impulse test", "Cover-uncover test", "Skew deviation test"], 0, "The supine roll test assesses horizontal-canal BPPV. Geotropic or apogeotropic nystagmus patterns can help classify the variant, but interpretation requires correct positioning and clinical context.", "bppv"],
+      ["bppv-torsion", "BPPV", "Peripheral", "Intermediate", "multiple", "In typical posterior-canal canalithiasis, what does the torsional component of positional nystagmus generally do?", "Beats toward the affected, undermost ear during the provoking position", ["Always beats away from the affected ear", "Is absent in every case", "Identifies the side of a central lesion"], 0, "The characteristic response is upbeat with a torsional component toward the affected ear, which is typically undermost during Dix–Hallpike. Atypical findings warrant broader assessment.", "bppv"],
+      ["bppv-cupulo", "BPPV", "Peripheral", "Expert", "multiple", "Compared with typical canalithiasis, cupulolithiasis may produce which positional response?", "More persistent positional nystagmus while the provoking position is maintained", ["Only a single corrective saccade", "No position-related eye movement", "Only direction-changing gaze-evoked nystagmus"], 0, "Particles adherent to a cupula can produce sustained deflection and more persistent positional nystagmus. This is a pattern distinction; positional response duration alone is not definitive.", "bppv"],
+      ["bppv-reposition", "BPPV", "Peripheral", "Expert", "truefalse", "For a typical, correctly identified posterior-canal BPPV, a canalith-repositioning procedure is generally preferred over routine long-term vestibular suppressant use.", "True", ["False"], 0, "True. Repositioning maneuvers address the mechanical cause of typical canalithiasis; routine vestibular suppressant use is not a substitute and may impede compensation. Individual contraindications and clinical circumstances matter.", "bppv"],
+
+      ["auv-duration", "Vestibular neuritis", "Peripheral", "Beginner", "multiple", "Which time course is typical of acute unilateral vestibulopathy?", "Acute-onset, sustained vestibular symptoms lasting at least 24 hours", ["Repeated seconds-long attacks only with rolling in bed", "A single brief episode under 10 seconds", "Vertigo only during loud sounds"], 0, "The Bárány Society criteria describe an acute vestibular syndrome with sustained symptoms; acute unilateral vestibulopathy is not a label for every brief or recurrent dizzy spell.", "auv"],
+      ["auv-hearing", "Vestibular neuritis", "Peripheral", "Beginner", "multiple", "Which associated finding is not expected in the classic acute unilateral vestibulopathy criteria?", "New acute hearing loss", ["Unidirectional horizontal-torsional spontaneous nystagmus", "Unilateral vestibulo-ocular reflex deficit", "Postural instability"], 0, "Acute hearing loss is not part of the classic acute unilateral vestibulopathy definition and raises alternatives such as labyrinthine or vascular disease. Assess new hearing loss urgently in context.", "auv"],
+      ["auv-headimpulse", "Vestibular neuritis", "Peripheral", "Intermediate", "multiple", "On a rightward bedside head impulse toward a hypofunctioning right labyrinth, what may be observed?", "A corrective catch-up saccade after the head movement", ["A sustained skew deviation in every case", "A normal response proving a peripheral lesion", "A vertical saccade replacing the VOR"], 0, "Reduced high-frequency VOR function may cause a corrective saccade after the head turn toward the deficient side. A normal bedside test does not by itself establish a central cause; technique and context matter.", "auv"],
+      ["auv-vhit", "Vestibular neuritis", "Peripheral", "Intermediate", "multiple", "What does the video head impulse test (vHIT) primarily assess?", "High-frequency semicircular-canal VOR gain and corrective saccades", ["Low-frequency otolith function only", "Pure-tone hearing thresholds", "Visual acuity during reading"], 0, "vHIT evaluates high-acceleration, high-frequency canal VOR responses. It samples a different stimulus range from caloric testing; one test does not replace the other in every clinical question.", "auv"],
+      ["auv-compensation", "Vestibular neuritis", "Peripheral", "Expert", "multiple", "Which rehabilitation principle supports central compensation after a stable unilateral vestibular loss?", "Repeated, appropriately dosed gaze-stability and balance exercises", ["Avoiding all head movement indefinitely", "Using a cervical collar as the only treatment", "Keeping both eyes closed during all walking"], 0, "Vestibular rehabilitation commonly uses individualized gaze-stability, balance, and habituation exercises when appropriate. Programs should be tailored to the patient, safety, and clinical phase.", "auv"],
+      ["auv-criteria", "Vestibular neuritis", "Peripheral", "Expert", "truefalse", "Acute unilateral vestibulopathy is a diagnosis of exclusion that requires no acute central neurologic signs and an appropriate unilateral peripheral vestibular deficit.", "True", ["False"], 0, "True. The consensus criteria include an acute vestibular syndrome, peripheral vestibular signs indicating unilateral loss, and absence of acute central neurologic or acute auditory signs that would change the diagnosis.", "auv"],
+
+      ["meniere-probable", "Menière’s disease", "Peripheral", "Beginner", "multiple", "What is the episode-duration range for probable Menière’s disease in the consensus criteria?", "20 minutes to 24 hours", ["Under 20 seconds", "20 minutes to 12 hours only", "More than 30 days continuously"], 0, "Probable Menière’s disease includes episodic vestibular symptoms lasting 20 minutes to 24 hours and fluctuating aural symptoms. Definite disease has additional audiometric and symptom criteria.", "meniere"],
+      ["meniere-tinnitus", "Menière’s disease", "Peripheral", "Beginner", "multiple", "Which symptom may fluctuate with Menière’s disease episodes?", "Aural fullness, tinnitus, or hearing change in the affected ear", ["Diplopia in all directions", "Limb weakness", "Loss of smell"], 0, "Fluctuating aural symptoms in the affected ear are part of the Menière’s disease criteria. Their presence alone is not sufficient to make the diagnosis.", "meniere"],
+      ["meniere-hearing", "Menière’s disease", "Peripheral", "Intermediate", "multiple", "Which hearing pattern supports definite Menière’s disease criteria?", "Audiometrically documented low- to mid-frequency sensorineural hearing loss in the affected ear", ["Conductive loss at all frequencies only", "Isolated high-frequency loss in both ears is required", "Normal audiometry is required"], 0, "The definite criteria require documented low- to mid-frequency sensorineural hearing loss in the affected ear, alongside the specified episodic vertigo and fluctuating aural symptoms.", "meniere"],
+      ["meniere-vertigo-count", "Menière’s disease", "Peripheral", "Intermediate", "truefalse", "Definite Menière’s disease criteria require at least two spontaneous vertigo episodes within the specified duration range.", "True", ["False"], 0, "True. Definite criteria require at least two spontaneous vertigo episodes lasting 20 minutes to 12 hours, plus the specified audiometric and fluctuating aural features.", "meniere"],
+      ["meniere-mimic", "Menière’s disease", "Peripheral", "Expert", "multiple", "A patient has episodic vertigo and ear fullness but no qualifying audiometric evidence. What is the best interpretation?", "Do not assume definite Menière’s disease; assess the full criteria and alternatives", ["Ear fullness alone confirms definite disease", "A single symptom episode is sufficient", "Normal audiometry proves vestibular migraine"], 0, "Symptoms overlap across disorders. Definite Menière’s disease requires the full consensus criteria, including audiometrically documented hearing loss; assess longitudinally and consider alternatives.", "meniere"],
+      ["meniere-probable-v-definite", "Menière’s disease", "Peripheral", "Expert", "multiple", "Which feature distinguishes definite from probable Menière’s disease most directly in the consensus criteria?", "Documented low- to mid-frequency sensorineural hearing loss", ["Any history of nausea", "A positive Romberg test", "Symptoms provoked by looking upward"], 0, "Documented low- to mid-frequency sensorineural hearing loss in the affected ear is a defining criterion for definite disease. Probable disease does not require that audiometric finding.", "meniere"],
+
+      ["vm-episodes", "Vestibular migraine", "Peripheral", "Beginner", "multiple", "How many vestibular episodes are required at minimum by vestibular migraine criteria?", "At least five", ["One", "Two", "Twenty"], 0, "The consensus criteria require at least five episodes of moderate or severe vestibular symptoms, along with the other diagnostic criteria.", "migraine"],
+      ["vm-duration", "Vestibular migraine", "Peripheral", "Beginner", "multiple", "What is the qualifying duration range for vestibular migraine episodes?", "5 minutes to 72 hours", ["Only under 5 seconds", "20 minutes to 12 hours exclusively", "More than 30 days"], 0, "Qualifying episodes last from 5 minutes to 72 hours. Some patients have repeated short attacks in a longer episode; apply the consensus criteria to the clinical pattern.", "migraine"],
+      ["vm-headache-not-required", "Vestibular migraine", "Peripheral", "Intermediate", "truefalse", "A qualifying vestibular migraine episode must always include headache at the same time.", "False", ["True"], 0, "False. Migraine features must occur during at least half of episodes, but these can include qualifying headache, photophobia with phonophobia, or visual aura; headache is not obligatory in every episode.", "migraine"],
+      ["vm-qualifying-symptoms", "Vestibular migraine", "Peripheral", "Intermediate", "multiple", "Which symptom can qualify as a vestibular symptom for vestibular migraine criteria?", "Visually induced vertigo", ["Isolated presyncope on standing only", "Syncope without vestibular symptoms", "Tinnitus alone"], 0, "Qualifying symptoms include spontaneous, positional, visually induced, or head-motion-induced vertigo, and head-motion-induced dizziness with nausea. Not all nonspecific dizziness qualifies.", "migraine"],
+      ["vm-biomarker", "Vestibular migraine", "Peripheral", "Expert", "multiple", "Which statement about vestibular migraine diagnosis is most accurate?", "It is based on clinical criteria; there is no single diagnostic biomarker", ["A single blood test confirms it", "A normal MRI confirms it", "A specific VEMP pattern is required"], 0, "Vestibular migraine is diagnosed clinically using consensus criteria and consideration of alternatives. There is no single laboratory, imaging, or vestibular test that establishes the diagnosis.", "migraine"],
+      ["vm-features-half", "Vestibular migraine", "Peripheral", "Expert", "truefalse", "For vestibular migraine, at least one qualifying migraine feature must be present during at least half of vestibular episodes.", "True", ["False"], 0, "True. In addition, the patient must have a current or past history of migraine and meet the episode and symptom criteria.", "migraine"],
+
+      ["scds-third-window", "SCDS", "Peripheral", "Beginner", "multiple", "What does a 'third mobile window' mean in SCDS?", "An abnormal additional pathway for inner-ear sound/pressure energy", ["A third semicircular canal", "A congenital absence of the oval window", "A hole in the tympanic membrane"], 0, "A dehiscence can create an additional mobile window that changes inner-ear pressure and sound transmission, producing characteristic auditory and vestibular symptoms.", "scds"],
+      ["scds-autophony", "SCDS", "Peripheral", "Beginner", "multiple", "Which symptom is compatible with superior canal dehiscence syndrome?", "Autophony or unusually loud perception of internal body sounds", ["Loss of pain sensation", "Isolated anosmia", "Intermittent aphasia"], 0, "Autophony and bone-conduction hyperacusis are compatible symptoms. The diagnosis still requires physiologic evidence and appropriate high-resolution imaging, not symptoms alone.", "scds"],
+      ["scds-vemp", "SCDS", "Peripheral", "Intermediate", "multiple", "Which physiologic finding can support SCDS when interpreted with symptoms and imaging?", "Enhanced VEMP responses, such as low cVEMP threshold or elevated oVEMP amplitude", ["Absent auditory brainstem responses in every case", "A positive Dix–Hallpike test", "Reduced visual acuity"], 0, "Enhanced vestibular-evoked myogenic potentials can provide physiologic evidence of a third-window effect. Thresholds and amplitudes depend on protocol and laboratory norms.", "scds"],
+      ["scds-imaging", "SCDS", "Peripheral", "Intermediate", "multiple", "Which imaging approach is used to assess suspected superior canal dehiscence?", "High-resolution temporal-bone CT with appropriate canal-plane reconstructions", ["Routine noncontrast head CT alone", "Lumbar MRI", "Carotid ultrasound"], 0, "The consensus calls for appropriately performed high-resolution CT demonstrating dehiscence. Imaging must be correlated with symptoms and physiologic evidence; apparent defects can be overcalled.", "scds"],
+      ["scds-triad", "SCDS", "Peripheral", "Expert", "multiple", "The Bárány Society criteria require evidence from which combination of domains for SCDS?", "Compatible symptoms, physiologic evidence, and high-resolution CT evidence", ["Symptoms alone", "CT alone", "A family history and normal audiogram only"], 0, "The consensus framework requires at least one compatible symptom, one physiologic sign or test, and CT evidence in the appropriate canal plane, with no better explanation.", "scds"],
+      ["scds-ct-alone", "SCDS", "Peripheral", "Expert", "truefalse", "A radiologic superior canal dehiscence on CT, without compatible symptoms and physiologic evidence, is sufficient to diagnose SCDS.", "False", ["True"], 0, "False. SCDS is a clinical syndrome with symptom, physiologic, and imaging criteria. CT alone can identify incidental or overcalled dehiscence.", "scds"],
+
+      ["peripheral-fastphase", "Peripheral nystagmus", "Peripheral", "Beginner", "multiple", "Nystagmus direction is conventionally named by which component?", "The fast phase", ["The slow phase", "The direction of head turn", "The side of the stronger labyrinth"], 0, "Jerk nystagmus is named for the direction of its fast corrective phase. Always distinguish fast phase direction from slow phase drift when documenting.", "ocular"],
+      ["peripheral-slowphase", "Peripheral nystagmus", "Peripheral", "Beginner", "multiple", "In a typical acute unilateral peripheral vestibular hypofunction, the slow phase of spontaneous nystagmus is directed approximately:", "Toward the hypofunctioning side", ["Away from the hypofunctioning side", "Only vertically", "Toward the side of better hearing"], 0, "A resting tone imbalance produces a slow drift usually toward the less active side; corrective quick phases beat away from it. This simplified pattern can be modified by compensation or mixed lesions.", "ocular"],
+      ["alexanders-law", "Peripheral nystagmus", "Peripheral", "Intermediate", "multiple", "A patient has left-sided acute peripheral vestibular loss and right-beating spontaneous nystagmus. Under Alexander’s law, where is it typically most intense?", "On right gaze, in the direction of the fast phase", ["On left gaze, toward the slow phase", "Only in downgaze", "Only with eyes closed"], 0, "Alexander’s law describes greater intensity of typical spontaneous peripheral nystagmus when gaze is directed toward its fast phase. It is a clinical tendency, not a stand-alone central/peripheral test.", "ocular"],
+      ["peripheral-fixation", "Peripheral nystagmus", "Peripheral", "Intermediate", "multiple", "What often happens to peripheral vestibular nystagmus when visual fixation is allowed?", "Its intensity may be reduced", ["It always reverses direction", "It becomes pure vertical in every case", "It is unaffected in all patients"], 0, "Visual fixation often suppresses peripheral vestibular nystagmus. Suppression is variable, and impaired fixation suppression can support cerebellar dysfunction but should not be used alone.", "ocular"],
+      ["peripheral-jerk", "Peripheral nystagmus", "Peripheral", "Expert", "multiple", "A typical jerk nystagmus cycle consists of:", "A slow drift followed by a corrective quick phase", ["Two equally fast phases with no drift", "A single smooth pursuit movement", "A vergence movement followed by a blink"], 0, "Jerk nystagmus is characterized by a slow phase and a resetting quick phase. The slow phase may be generated by vestibular imbalance, gaze-holding failure, or other mechanisms.", "ocular"],
+      ["peripheral-alexander-limit", "Peripheral nystagmus", "Peripheral", "Expert", "truefalse", "Alexander’s law alone reliably excludes a central lesion whenever nystagmus intensifies toward its fast phase.", "False", ["True"], 0, "False. Alexander’s law describes a typical intensity-gaze relationship in peripheral vestibular nystagmus but is not pathognomonic. Central and mixed disorders may produce overlapping signs.", "ocular"],
+
+      ["central-gaze-evoked", "Central nystagmus", "Central", "Beginner", "multiple", "Direction-changing horizontal nystagmus on right versus left gaze is most concerning for:", "A central gaze-holding or cerebellar disorder", ["Typical unilateral canalithiasis only", "Normal fixation", "An isolated conductive hearing loss"], 0, "Direction-changing gaze-evoked nystagmus is a central ocular motor sign. Consider cerebellar and neural-integrator dysfunction, medications, and the full clinical context.", "ocular"],
+      ["central-downbeat", "Central nystagmus", "Central", "Beginner", "multiple", "Persistent downbeat nystagmus in primary position should prompt consideration of:", "A central cerebellar or craniocervical cause", ["Only a right posterior-canal BPPV", "Normal aging in every patient", "A middle-ear effusion"], 0, "Downbeat nystagmus can arise from cerebellar, cervicomedullary, drug-related, or other central causes. Assess the full examination and investigate appropriately.", "ocular"],
+      ["central-vertical", "Central nystagmus", "Central", "Intermediate", "truefalse", "Pure vertical spontaneous nystagmus is a typical hallmark of an isolated unilateral horizontal-canal hypofunction.", "False", ["True"], 0, "False. Pure vertical or torsional nystagmus raises concern for central pathology, although eye movement patterns must be interpreted with the entire syndrome and examination.", "ocular"],
+      ["central-gaze-holding", "Central nystagmus", "Central", "Intermediate", "multiple", "With a leaky gaze-holding integrator, the eye often:", "Drifts back toward primary position and is corrected by a quick phase", ["Remains perfectly eccentric without drift", "Moves only during head impulses", "Loses pupillary light response"], 0, "A leaky neural integrator cannot sustain eccentric eye position. The eye drifts centripetally; corrective saccades can produce gaze-evoked jerk nystagmus.", "ocular"],
+      ["central-fixation", "Central nystagmus", "Central", "Expert", "multiple", "Failure to suppress vestibular nystagmus with visual fixation can point toward dysfunction of which region?", "Cerebellar floccular/parafloccular pathways", ["Cochlear nucleus only", "Olfactory bulb", "Spinal dorsal columns only"], 0, "The flocculus and related cerebellar pathways contribute to visual fixation suppression of the VOR. This finding is supportive rather than uniquely localizing.", "ocular"],
+      ["central-skew", "Central nystagmus", "Central", "Expert", "truefalse", "A skew deviation is an ocular motor sign that can reflect disruption of central otolith-ocular pathways.", "True", ["False"], 0, "True. Skew reflects imbalance in central otolith-ocular pathways, often in the brainstem or cerebellum, but can occur in other settings. Interpret with the full exam.", "hints"],
+
+      ["horizontal-pprf", "Horizontal saccades", "Central", "Beginner", "multiple", "The paramedian pontine reticular formation (PPRF) is most closely associated with generating:", "Horizontal saccades toward the ipsilateral side", ["Vertical smooth pursuit only", "Pupillary constriction", "Auditory startle"], 0, "The PPRF is a key horizontal saccadic burst generator. Output reaches the ipsilateral abducens nucleus; higher-order inputs and neighboring structures also shape gaze.", "ocular"],
+      ["horizontal-abducens", "Horizontal saccades", "Central", "Beginner", "multiple", "Which cranial nerve nucleus directly drives the lateral rectus and contributes internuclear neurons for conjugate horizontal gaze?", "Abducens nucleus (CN VI)", ["Trochlear nucleus (CN IV)", "Edinger–Westphal nucleus", "Hypoglossal nucleus"], 0, "The abducens nucleus contains motor neurons to the ipsilateral lateral rectus and internuclear neurons that cross and ascend in the MLF to the contralateral oculomotor medial rectus subnucleus.", "ocular"],
+      ["horizontal-mfl", "Horizontal saccades", "Central", "Intermediate", "multiple", "An internuclear ophthalmoplegia from MLF injury classically causes:", "Ipsilateral adduction weakness on horizontal gaze with contralateral abducting nystagmus", ["Bilateral ptosis only", "Isolated vertical gaze palsy", "Loss of corneal reflex"], 0, "An MLF lesion interrupts internuclear drive from the abducens nucleus to the opposite medial rectus subnucleus. Convergence may be preserved, depending on lesion and cause.", "ocular"],
+      ["horizontal-onehalf", "Horizontal saccades", "Central", "Intermediate", "multiple", "A lesion affecting one PPRF/abducens region and the ipsilateral MLF can produce which pattern?", "One-and-a-half syndrome", ["Parinaud syndrome", "Internuclear ophthalmoplegia on both sides only", "Isolated skew deviation"], 0, "One-and-a-half syndrome combines an ipsilateral horizontal gaze palsy with an ipsilateral INO: only abduction of the opposite eye remains for horizontal gaze, subject to lesion details.", "ocular"],
+      ["horizontal-fef", "Horizontal saccades", "Central", "Expert", "multiple", "A unilateral frontal eye field activation normally drives a saccade:", "Toward the contralateral visual hemifield", ["Toward the ipsilateral ear only", "Only vertically upward", "Without involving brainstem gaze centers"], 0, "Frontal eye fields participate in voluntary saccades toward the contralateral side through distributed pathways including the superior colliculus and brainstem gaze generators.", "ocular"],
+      ["horizontal-localize", "Horizontal saccades", "Central", "Expert", "multiple", "Which exam distinction helps separate an MLF internuclear ophthalmoplegia from an isolated abducens nerve palsy?", "INO impairs adduction of one eye with abducting nystagmus of the fellow eye; CN VI palsy weakens abduction of the affected eye", ["Both produce identical isolated ptosis", "INO always abolishes pupillary responses", "CN VI palsy causes vertical gaze palsy"], 0, "INO localizes to internuclear connections and produces impaired adduction with abducting nystagmus; an abducens nerve palsy weakens ipsilateral abduction. The complete exam may reveal combined lesions.", "ocular"],
+
+      ["vertical-rimlf", "Vertical saccades", "Central", "Beginner", "multiple", "Which structure contains important burst neurons for vertical and torsional saccades?", "Rostral interstitial nucleus of the medial longitudinal fasciculus (riMLF)", ["PPRF", "Nucleus prepositus hypoglossi only", "Dorsal cochlear nucleus"], 0, "The riMLF in the rostral midbrain contains burst neurons for vertical and torsional saccades. Vertical gaze depends on a bilateral network, not a simple single-nucleus map.", "ocular"],
+      ["vertical-inc", "Vertical saccades", "Central", "Beginner", "multiple", "The interstitial nucleus of Cajal (INC) contributes most to:", "Vertical and torsional gaze holding", ["Horizontal saccade burst generation only", "Auditory localization", "Pupillary afferent input"], 0, "The INC acts as a neural integrator for vertical and torsional eye position, helping sustain gaze after a saccade.", "ocular"],
+      ["vertical-pc", "Vertical saccades", "Central", "Intermediate", "multiple", "The posterior commissure is particularly important for:", "Upward gaze pathways in the rostral midbrain", ["Horizontal canal transduction", "Pupillary afferent fibers in the optic nerve", "Saccades toward one ear only"], 0, "Posterior commissure pathways are important for upgaze. Dorsal midbrain lesions can impair upgaze and produce other characteristic signs; localization requires a full examination.", "ocular"],
+      ["vertical-parinaud", "Vertical saccades", "Central", "Intermediate", "multiple", "A dorsal midbrain syndrome with impaired upgaze is classically associated with dysfunction near:", "The posterior commissure/pretectal region", ["The flocculus alone", "The lateral geniculate nucleus", "The spinal vestibulospinal tract"], 0, "Parinaud (dorsal midbrain) syndrome often includes upgaze limitation with other signs such as convergence-retraction nystagmus or light-near dissociation. It is not defined by upgaze limitation alone.", "ocular"],
+      ["vertical-saccades-slow", "Vertical saccades", "Central", "Expert", "multiple", "Selective slowing of vertical saccades, with relatively preserved horizontal saccades, suggests dysfunction in:", "Rostral midbrain vertical saccadic circuitry including riMLF", ["An isolated unilateral horizontal canal", "The cochlea", "The abducens nerve only"], 0, "The riMLF and connected rostral midbrain structures contribute to vertical saccades. Bedside measurements are influenced by age, attention, and technique; interpret the full pattern.", "ocular"],
+      ["vertical-neural-integrator", "Vertical saccades", "Central", "Expert", "truefalse", "The riMLF and INC have identical functions: both are solely burst generators for vertical saccades.", "False", ["True"], 0, "False. The riMLF is associated with vertical/torsional saccadic burst generation; the INC contributes importantly to vertical/torsional gaze holding as a neural integrator.", "ocular"],
+
+      ["integrator-horizontal", "Gaze holding", "Central", "Beginner", "multiple", "Which structures are major contributors to the horizontal neural integrator?", "Nucleus prepositus hypoglossi and medial vestibular nucleus", ["riMLF and posterior commissure only", "Cochlear nuclei", "Substantia nigra only"], 0, "NPH and medial vestibular nucleus contribute to the horizontal gaze-holding integrator, with cerebellar modulation.", "ocular"],
+      ["integrator-vertical", "Gaze holding", "Central", "Beginner", "multiple", "Which structure is a key vertical/torsional neural integrator?", "Interstitial nucleus of Cajal", ["PPRF", "Abducens nerve", "Lateral geniculate nucleus"], 0, "The INC helps maintain vertical and torsional eye position. Damage can produce vertical/torsional gaze-holding deficits.", "ocular"],
+      ["integrator-drift", "Gaze holding", "Central", "Intermediate", "multiple", "After looking right, the eyes slowly drift left and corrective rightward quick phases occur. This pattern is:", "Right gaze-evoked jerk nystagmus from an inability to hold eccentric gaze", ["A left-beating spontaneous nystagmus by definition", "A normal saccadic pursuit response", "A pure pendular nystagmus"], 0, "The direction of gaze-evoked nystagmus is described by the corrective quick phase. A centripetal slow drift reflects failure to maintain eccentric position; assess central causes, drugs, and context.", "ocular"],
+      ["integrator-cerebellum", "Gaze holding", "Central", "Intermediate", "multiple", "Which cerebellar region helps calibrate gaze holding and smooth pursuit?", "Flocculus and paraflocculus", ["Anterior cochlear nucleus", "Hippocampus", "Caudate tail only"], 0, "The flocculus and paraflocculus participate in ocular motor calibration, including pursuit and gaze holding. Cerebellar lesions can cause multiple ocular motor signs.", "ocular"],
+      ["integrator-direction", "Gaze holding", "Central", "Expert", "truefalse", "Gaze-evoked nystagmus always indicates a structural brainstem lesion.", "False", ["True"], 0, "False. It can be associated with cerebellar or brainstem disease, medications (including sedatives or anticonvulsants), physiologic end-gaze, and other factors. Evaluate severity, persistence, and context.", "ocular"],
+      ["integrator-localization", "Gaze holding", "Central", "Expert", "multiple", "Horizontal gaze-evoked nystagmus together with other cerebellar ocular motor signs most strongly points toward:", "A cerebellar/neural-integrator network disorder rather than an isolated labyrinth lesion", ["An isolated conductive hearing loss", "A single posterior-canal BPPV in every case", "A pure optic nerve lesion"], 0, "A cluster of gaze-holding and cerebellar ocular motor abnormalities supports central network localization, but precise localization and etiology require the full neurologic assessment.", "ocular"],
+
+      ["pursuit-definition", "Smooth pursuit", "Central", "Beginner", "multiple", "Smooth pursuit primarily allows the eyes to:", "Follow a moving visual target with relatively low retinal slip", ["Make rapid gaze shifts between stationary targets", "Compensate for every head impulse without visual input", "Constrict the pupil"], 0, "Smooth pursuit tracks a moving target and is distinct from saccades and the VOR. Pursuit performance depends on target speed, attention, and visual function.", "ocular"],
+      ["pursuit-vs-saccade", "Smooth pursuit", "Central", "Beginner", "multiple", "When pursuit cannot keep up with a moving target, what may be superimposed to recapture it?", "Catch-up saccades", ["Skew deviation", "Ocular bobbing", "A tonic pupil"], 0, "Catch-up saccades are quick movements that bring gaze back onto a moving target when smooth pursuit lags.", "ocular"],
+      ["pursuit-pathway", "Smooth pursuit", "Central", "Intermediate", "multiple", "Which best describes the smooth-pursuit pathway?", "Distributed visual cortical motion areas project through pontine relays and cerebellum to ocular motor networks", ["A direct cochlear-to-abducens pathway", "A single peripheral canal reflex", "Only the optic nerve with no brainstem or cerebellum"], 0, "Pursuit relies on distributed cortical visual-motion processing and cortical, pontine, cerebellar, and brainstem ocular motor connections.", "ocular"],
+      ["pursuit-attention", "Smooth pursuit", "Central", "Intermediate", "truefalse", "Reduced pursuit gain can be influenced by age, attention, alertness, and target characteristics, as well as disease.", "True", ["False"], 0, "True. Pursuit is sensitive to patient factors and test setup. A subtle abnormality should not be over-localized without considering these influences and the rest of the examination.", "ocular"],
+      ["pursuit-localization", "Smooth pursuit", "Central", "Expert", "multiple", "Why is an isolated pursuit abnormality a limited lesion localizer?", "Pursuit depends on a distributed network and is affected by attention, age, vision, and medication", ["It can only be abnormal in a single pons nucleus", "It directly measures cochlear function", "It is independent of the cerebellum"], 0, "Smooth pursuit involves cortical, pontine, cerebellar, and ocular motor systems. Abnormal pursuit is informative in context but does not uniquely identify one lesion site.", "ocular"],
+      ["pursuit-vor", "Smooth pursuit", "Central", "Expert", "multiple", "A patient follows a slowly moving target poorly but has a relatively intact high-frequency head impulse. These tests primarily assess:", "Different systems: visual pursuit versus high-frequency canal VOR", ["The same reflex at the same frequency", "Only otolith function", "Only visual acuity"], 0, "Pursuit tracks a visual target; head impulse assesses high-frequency canal-driven VOR. The tests sample different functions and stimulus conditions.", "ocular"],
+
+      ["vor-three-neuron", "VOR", "Foundations", "Beginner", "multiple", "Which sequence best summarizes the basic horizontal VOR arc?", "Canal afferent → vestibular nucleus → ocular motor nuclei", ["Cochlea → optic chiasm → spinal cord", "Retina → hippocampus → vestibular nerve", "Otolith → facial nucleus → cochlea"], 0, "The horizontal canal afferents project to vestibular nuclei, which connect with abducens and oculomotor nuclei to produce compensatory conjugate eye movement.", "auv"],
+      ["vor-direction", "VOR", "Foundations", "Beginner", "truefalse", "For a rightward head turn, the compensatory horizontal VOR moves the eyes leftward.", "True", ["False"], 0, "True. The eyes rotate opposite the head movement to help stabilize the image on the retina.", "auv"],
+      ["vor-gain", "VOR", "Foundations", "Intermediate", "multiple", "VOR gain is commonly conceptualized as:", "Eye velocity divided by head velocity, with opposite directions considered", ["Head velocity divided by hearing threshold", "Saccade amplitude divided by pupil size", "Fixation duration divided by head position"], 0, "VOR gain relates eye velocity to head velocity; sign conventions differ across systems, so magnitude and calibration should be interpreted using the device's method.", "auv"],
+      ["vor-saccades", "VOR", "Foundations", "Intermediate", "multiple", "Corrective saccades after a head impulse are also called:", "Catch-up saccades", ["Square-wave jerks", "Ocular flutter", "Convergence-retraction movements"], 0, "Catch-up saccades refoveate the target after inadequate compensatory eye movement. They can be overt or covert relative to the end of the head movement.", "auv"],
+      ["vor-cerebellar", "VOR", "Foundations", "Expert", "multiple", "Which structure is important in adaptive calibration of VOR gain?", "Cerebellar flocculus", ["Cochlear nucleus", "Optic tract only", "Spinal trigeminal nucleus"], 0, "The flocculus and related cerebellar circuits participate in VOR adaptation and calibration, in addition to vestibular and ocular motor pathways.", "ocular"],
+      ["vor-frequency", "VOR", "Foundations", "Expert", "multiple", "Why can caloric testing and vHIT disagree without either test necessarily being erroneous?", "They assess different frequency ranges and stimulus conditions of vestibular function", ["They measure identical stimuli and must always match", "Calorics assess vision while vHIT assesses hearing", "vHIT tests only static posture"], 0, "Calorics assess a very low-frequency horizontal canal response; vHIT assesses high-frequency, high-acceleration canal function. Select tests according to the clinical question.", "auv"],
+
+      ["pathway-mlf", "Central vestibular pathways", "Central", "Beginner", "multiple", "The medial longitudinal fasciculus (MLF) is important for:", "Linking vestibular and ocular motor nuclei for conjugate gaze", ["Sound conduction through the middle ear", "Visual phototransduction", "Taste sensation"], 0, "The MLF carries internuclear and vestibular connections among ocular motor nuclei and contributes to coordinated gaze and vestibular responses.", "ocular"],
+      ["pathway-flocculus", "Central vestibular pathways", "Central", "Beginner", "multiple", "Which structure modulates VOR adaptation and visual fixation interactions?", "Cerebellar flocculus", ["Primary auditory cortex", "Olfactory tract", "Caudate nucleus only"], 0, "The flocculus and related vestibulocerebellum participate in VOR adaptation, pursuit, and fixation-related modulation.", "ocular"],
+      ["pathway-otolith", "Central vestibular pathways", "Central", "Intermediate", "multiple", "Otolith-ocular pathways contribute strongly to sensing:", "Linear acceleration and head tilt relative to gravity", ["Pure sound frequency", "Visual color contrast", "Voluntary limb strength"], 0, "Utricular and saccular inputs encode linear acceleration and gravity-related head orientation and contribute to ocular and postural reflexes.", "ocular"],
+      ["pathway-vestibulospinal", "Central vestibular pathways", "Central", "Intermediate", "multiple", "Vestibulospinal pathways primarily contribute to:", "Postural and head-body stabilization responses", ["Auditory speech comprehension", "Color vision", "Pupillary light reflex only"], 0, "Vestibulospinal tracts convey vestibular influences to spinal circuits involved in posture, balance, and head-body stabilization.", "ocular"],
+      ["pathway-lateral-medial", "Central vestibular pathways", "Central", "Expert", "multiple", "Which statement best distinguishes the lateral and medial vestibulospinal systems?", "The lateral tract broadly facilitates antigravity extensor tone; the medial tract contributes especially to head and neck stabilization", ["Both are exclusively auditory pathways", "The medial tract controls pupil constriction only", "The lateral tract ascends only to visual cortex"], 0, "This is a useful simplified distinction: lateral vestibulospinal influences posture and extensor tone, while medial vestibulospinal projections via the MLF contribute to neck/head stabilization. There is overlap and species/anatomic complexity.", "ocular"],
+      ["pathway-central-signs", "Central vestibular pathways", "Central", "Expert", "multiple", "Which combination raises concern for a central vestibular lesion in the right clinical setting?", "Direction-changing gaze-evoked nystagmus with skew or other focal neurologic signs", ["Typical brief canal-specific positional nystagmus only", "Isolated motion sensitivity with normal examination", "A single positive Romberg test"], 0, "Central signs such as direction-changing gaze-evoked nystagmus, skew, severe truncal ataxia, or focal neurologic findings should be interpreted urgently in the clinical syndrome; no isolated sign covers every case.", "hints"],
+
+      ["avs-duration", "Acute vestibular syndrome", "Central", "Beginner", "multiple", "Acute vestibular syndrome (AVS) is generally characterized by:", "Acute-onset, continuous dizziness/vertigo with nausea, motion intolerance, nystagmus, and gait unsteadiness", ["Brief triggered spells lasting seconds only", "Chronic isolated hearing loss", "Visual blur only while reading"], 0, "AVS describes a sustained acute syndrome. It is distinct from brief triggered episodic vestibular syndrome and spontaneous episodic vestibular syndrome.", "hints"],
+      ["avs-hints-use", "Acute vestibular syndrome", "Central", "Beginner", "truefalse", "HINTS is a general screening test for every patient who reports dizziness, including brief positional episodes.", "False", ["True"], 0, "False. HINTS is designed for appropriately selected patients with acute vestibular syndrome, usually with ongoing symptoms and spontaneous nystagmus, and should be performed by trained clinicians.", "hints"],
+      ["avs-hints-headimpulse", "Acute vestibular syndrome", "Central", "Intermediate", "multiple", "In a patient with AVS, which head-impulse result is a central warning feature within the HINTS examination?", "A normal horizontal head impulse despite ongoing AVS", ["A corrective saccade toward one side", "Mild motion intolerance", "A positive Romberg test alone"], 0, "A normal head impulse in AVS can suggest stroke, particularly with other central HINTS findings. HINTS interpretation is not safe as a standalone test outside its intended population or without training.", "hints"],
+      ["avs-hearing-hints", "Acute vestibular syndrome", "Central", "Intermediate", "multiple", "What is the purpose of adding bedside hearing assessment to HINTS as HINTS-plus?", "To detect new unilateral hearing loss that can accompany some posterior circulation strokes", ["To diagnose BPPV", "To measure VOR gain", "To test visual pursuit"], 0, "New unilateral hearing loss in AVS can indicate labyrinthine or AICA-territory ischemia as well as other causes. HINTS-plus should be used by trained clinicians in the appropriate syndrome.", "hints"],
+      ["avs-ataxia", "Acute vestibular syndrome", "Central", "Expert", "multiple", "In AVS, profound truncal instability with inability to sit or stand unsupported should:", "Increase concern for a central cause and prompt urgent clinical assessment", ["Be considered proof of benign neuritis", "Exclude stroke", "Be ignored if nausea is present"], 0, "Severe truncal ataxia is a concerning central feature, though clinical assessment must consider the entire presentation and immediate safety.", "hints"],
+      ["avs-safety", "Acute vestibular syndrome", "Central", "Expert", "truefalse", "A reassuring single bedside sign should override focal neurologic deficits and the overall clinical concern for stroke.", "False", ["True"], 0, "False. Bedside tests have limits and depend on patient selection, technique, and expertise. Focal signs or concerning clinical context require appropriate urgent evaluation.", "hints"]
+    ];
+
+    additionalQuestionRows.forEach(([id, topic, area, level, type, prompt, correctChoice, distractors, answerIndex, explanation, sourceKey]) => {
+      const choices = [...distractors];
+      choices.splice(answerIndex, 0, correctChoice);
+      starterQuestions.push({
+        id,
+        topic,
+        area,
+        level,
+        type,
+        prompt,
+        choices,
+        answer: answerIndex,
+        explanation,
+        source: questionSources[sourceKey]
+      });
+    });
+
+    const customStorageKey = "vestibular-review-custom-questions-v1";
+    const areaFilter = document.getElementById("area-filter");
+    const topicFilter = document.getElementById("topic-filter");
+    const levelFilter = document.getElementById("level-filter");
+    const quizMeta = document.getElementById("quiz-meta");
+    const quizContent = document.getElementById("quiz-content");
+    const progressCopy = document.getElementById("progress-copy");
+    const progressFill = document.getElementById("progress-fill");
+    const filterCount = document.getElementById("filter-count");
+    const formStatus = document.getElementById("form-status");
+    let customQuestions = loadCustomQuestions();
+    let sessionQuestions = [];
+    let questionIndex = 0;
+    let selectedAnswer = null;
+    let answered = false;
+    let correctCount = 0;
+
+    function isSafeSource(source) {
+      return source && typeof source.title === "string" && typeof source.url === "string" && /^https?:\/\//i.test(source.url);
+    }
+
+    function isValidQuestion(question) {
+      return question && typeof question.id === "string" &&
+        typeof question.prompt === "string" && question.prompt.trim() &&
+        typeof question.topic === "string" && question.topic.trim() &&
+        ["Peripheral", "Central", "Foundations"].includes(question.area) &&
+        ["Beginner", "Intermediate", "Expert"].includes(question.level) &&
+        Array.isArray(question.choices) && question.choices.length >= 2 &&
+        question.choices.every(choice => typeof choice === "string" && choice.trim()) &&
+        Number.isInteger(question.answer) && question.answer >= 0 && question.answer < question.choices.length &&
+        typeof question.explanation === "string" && question.explanation.trim() &&
+        (!question.source || isSafeSource(question.source));
+    }
+
+    function loadCustomQuestions() {
+      try {
+        const stored = localStorage.getItem(customStorageKey);
+        if (!stored) return [];
+        const parsed = JSON.parse(stored);
+        if (!Array.isArray(parsed) || !parsed.every(isValidQuestion)) throw new Error("Saved question bank has an invalid format.");
+        return parsed;
+      } catch (error) {
+        console.error("Unable to load saved vestibular questions.", error);
+        formStatus.textContent = "Saved questions could not be loaded; the starter bank is still available.";
+        formStatus.classList.add("is-error");
+        return [];
+      }
+    }
+
+    function allQuestions() {
+      return [...starterQuestions, ...customQuestions];
+    }
+
+    function getFilteredQuestions() {
+      return allQuestions().filter(question =>
+        (areaFilter.value === "All" || question.area === areaFilter.value) &&
+        (topicFilter.value === "All" || question.topic === topicFilter.value) &&
+        (levelFilter.value === "All" || question.level === levelFilter.value)
+      );
+    }
+
+    function refreshTopicOptions() {
+      const previousTopic = topicFilter.value;
+      const area = areaFilter.value;
+      const topics = [...new Set(allQuestions()
+        .filter(question => area === "All" || question.area === area)
+        .map(question => question.topic))]
+        .sort((a, b) => a.localeCompare(b));
+      topicFilter.replaceChildren(new Option("All topics", "All"));
+      topics.forEach(topic => topicFilter.add(new Option(topic, topic)));
+      topicFilter.value = topics.includes(previousTopic) ? previousTopic : "All";
+      updateFilterSummary();
+    }
+
+    function updateFilterSummary() {
+      const count = getFilteredQuestions().length;
+      filterCount.textContent = `${count} ${count === 1 ? "question" : "questions"} match these filters.`;
+      document.getElementById("hero-count").textContent = `${allQuestions().length} questions · ${customQuestions.length} yours`;
+      document.getElementById("start-button").disabled = count === 0;
+    }
+
+    function makeChip(text, green) {
+      const chip = document.createElement("span");
+      chip.className = green ? "chip chip-green" : "chip";
+      chip.textContent = text;
+      return chip;
+    }
+
+    function makeSourceLink(source) {
+      if (!isSafeSource(source)) return null;
+      const link = document.createElement("a");
+      link.href = source.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = `${source.title} ↗`;
+      return link;
+    }
+
+    function shuffle(items) {
+      const result = [...items];
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+      return result;
+    }
+
+    function startSession() {
+      sessionQuestions = shuffle(getFilteredQuestions());
+      questionIndex = 0;
+      selectedAnswer = null;
+      answered = false;
+      correctCount = 0;
+      if (!sessionQuestions.length) {
+        renderWelcome();
+        return;
+      }
+      renderQuestion();
+    }
+
+    function renderWelcome() {
+      quizMeta.replaceChildren(makeChip("Ready when you are", true));
+      progressCopy.textContent = "";
+      progressFill.style.width = "0%";
+      const wrapper = document.createElement("div");
+      wrapper.className = "welcome-state";
+      wrapper.innerHTML = '<span class="welcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 9.2 17 19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+      const title = document.createElement("h2");
+      title.textContent = "Make the pattern stick.";
+      const copy = document.createElement("p");
+      copy.textContent = "Select a system, topic, or difficulty, then start a session. Each answer includes an explanation and a link to its reference.";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "button button-primary";
+      button.textContent = "Start a session";
+      button.disabled = getFilteredQuestions().length === 0;
+      button.addEventListener("click", startSession);
+      wrapper.append(title, copy, button);
+      quizContent.replaceChildren(wrapper);
+    }
+
+    function renderQuestion() {
+      const sourceQuestion = sessionQuestions[questionIndex];
+      if (!sourceQuestion) {
+        renderFinish();
+        return;
+      }
+      const question = sourceQuestion.type === "multiple"
+        ? (() => {
+            const shuffled = shuffle(sourceQuestion.choices.map((choice, index) => ({
+              choice,
+              isCorrect: index === sourceQuestion.answer
+            })));
+            return {
+              ...sourceQuestion,
+              choices: shuffled.map(option => option.choice),
+              answer: shuffled.findIndex(option => option.isCorrect)
+            };
+          })()
+        : sourceQuestion;
+      selectedAnswer = null;
+      answered = false;
+      quizMeta.replaceChildren(
+        makeChip(question.area, true),
+        makeChip(question.topic, false),
+        makeChip(question.level, false),
+        makeChip(question.choices.length === 2 && (question.type === "boolean" || question.type === "truefalse") ? "True / false" : "Multiple choice", false)
+      );
+      progressCopy.textContent = `Question ${questionIndex + 1} of ${sessionQuestions.length}`;
+      progressFill.style.width = `${(questionIndex / sessionQuestions.length) * 100}%`;
+
+      const body = document.createElement("div");
+      body.className = "question-body";
+      const label = document.createElement("p");
+      label.className = "question-label";
+      label.textContent = "Choose the best answer";
+      const prompt = document.createElement("h2");
+      prompt.className = "question-text";
+      prompt.textContent = question.prompt;
+      const answers = document.createElement("div");
+      answers.className = "answers";
+      answers.setAttribute("role", "group");
+      answers.setAttribute("aria-label", "Answer choices");
+      const letters = ["A", "B", "C", "D", "E", "F"];
+      question.choices.forEach((choice, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-option";
+        button.setAttribute("aria-pressed", "false");
+        const key = document.createElement("span");
+        key.className = "answer-key";
+        key.textContent = question.choices.length === 2 && (question.type === "boolean" || question.type === "truefalse") ? (index === 0 ? "T" : "F") : (letters[index] || String(index + 1));
+        const text = document.createElement("span");
+        text.textContent = choice;
+        button.append(key, text);
+        button.addEventListener("click", () => {
+          if (answered) return;
+          selectedAnswer = index;
+          answers.querySelectorAll(".answer-option").forEach(option => {
+            option.classList.remove("is-selected");
+            option.setAttribute("aria-pressed", "false");
+          });
+          button.classList.add("is-selected");
+          button.setAttribute("aria-pressed", "true");
+          submitButton.disabled = false;
+          message.textContent = "";
+        });
+        answers.append(button);
+      });
+      const message = document.createElement("p");
+      message.className = "quiz-message";
+      message.setAttribute("role", "status");
+      const actions = document.createElement("div");
+      actions.className = "quiz-actions";
+      const submitButton = document.createElement("button");
+      submitButton.className = "button button-primary";
+      submitButton.type = "button";
+      submitButton.textContent = "Check answer";
+      submitButton.disabled = true;
+      submitButton.addEventListener("click", () => {
+        if (!answered) {
+          checkAnswer(question, answers, message, actions);
+          return;
+        }
+        if (questionIndex + 1 === sessionQuestions.length) renderFinish();
+        else {
+          questionIndex++;
+          renderQuestion();
+        }
+      });
+      actions.append(submitButton);
+      body.append(label, prompt, answers, message, actions);
+      quizContent.replaceChildren(body);
+    }
+
+    function checkAnswer(question, answers, message, actions) {
+      if (selectedAnswer === null) {
+        message.textContent = "Choose an answer before checking.";
+        return;
+      }
+      answered = true;
+      if (selectedAnswer === question.answer) correctCount++;
+      const options = [...answers.querySelectorAll(".answer-option")];
+      options.forEach((option, index) => {
+        option.disabled = true;
+        if (index === question.answer) option.classList.add("is-correct");
+        if (index === selectedAnswer && index !== question.answer) option.classList.add("is-incorrect");
+      });
+      const feedback = document.createElement("div");
+      feedback.className = `feedback${selectedAnswer === question.answer ? "" : " is-wrong"}`;
+      const heading = document.createElement("strong");
+      heading.textContent = selectedAnswer === question.answer ? "Correct" : `Not quite — the best answer is ${question.choices[question.answer]}`;
+      const explanation = document.createElement("p");
+      explanation.textContent = question.explanation;
+      feedback.append(heading, explanation);
+      const sourceLink = makeSourceLink(question.source);
+      if (sourceLink) feedback.append(sourceLink);
+      const body = quizContent.querySelector(".question-body");
+      body.insertBefore(feedback, body.querySelector(".quiz-actions"));
+      const submitButton = actions.querySelector("button");
+      submitButton.textContent = questionIndex + 1 === sessionQuestions.length ? "See results" : "Next question";
+      submitButton.disabled = false;
+      message.textContent = "";
+      progressFill.style.width = `${((questionIndex + 1) / sessionQuestions.length) * 100}%`;
+    }
+
+    function renderFinish() {
+      quizMeta.replaceChildren(makeChip("Session complete", true));
+      progressCopy.textContent = `${sessionQuestions.length} answered`;
+      progressFill.style.width = "100%";
+      const wrapper = document.createElement("div");
+      wrapper.className = "finish-state";
+      const title = document.createElement("h2");
+      title.textContent = "Nice work.";
+      const score = document.createElement("p");
+      score.className = "score-number";
+      score.textContent = `${correctCount} / ${sessionQuestions.length}`;
+      const copy = document.createElement("p");
+      copy.textContent = "Correct answers. Review explanations and references as you revisit the topics.";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "button button-primary";
+      button.textContent = "Try another session";
+      button.addEventListener("click", startSession);
+      wrapper.append(title, score, copy, button);
+      quizContent.replaceChildren(wrapper);
+    }
+
+    function renderQuestionBank() {
+      const container = document.getElementById("question-list");
+      const query = document.getElementById("bank-search").value.trim().toLowerCase();
+      const matches = allQuestions().filter(question =>
+        `${question.prompt} ${question.topic} ${question.area} ${question.level} ${question.explanation}`.toLowerCase().includes(query)
+      );
+      container.replaceChildren();
+      if (!matches.length) {
+        const empty = document.createElement("p");
+        empty.className = "panel empty-list";
+        empty.textContent = "No questions match that search.";
+        container.append(empty);
+        return;
+      }
+      matches.forEach(question => {
+        const article = document.createElement("article");
+        article.className = "panel library-question";
+        const tags = document.createElement("div");
+        tags.className = "library-top";
+        tags.append(makeChip(question.area, true), makeChip(question.topic, false), makeChip(question.level, false));
+        const prompt = document.createElement("h3");
+        prompt.textContent = question.prompt;
+        const explanation = document.createElement("p");
+        explanation.textContent = question.explanation;
+        article.append(tags, prompt, explanation);
+        const link = makeSourceLink(question.source);
+        if (link) article.append(link);
+        container.append(article);
+      });
+    }
+
+    function saveCustomQuestions() {
+      try {
+        localStorage.setItem(customStorageKey, JSON.stringify(customQuestions));
+        return true;
+      } catch (error) {
+        console.error("Unable to save vestibular questions.", error);
+        formStatus.textContent = "Could not save to this browser. Check available storage and try again.";
+        formStatus.classList.add("is-error");
+        return false;
+      }
+    }
+
+    function toggleQuestionType() {
+      const isBoolean = document.getElementById("new-type").value === "boolean";
+      const choices = document.getElementById("choice-fields");
+      const answer = document.getElementById("new-answer");
+      choices.hidden = isBoolean;
+      answer.replaceChildren();
+      if (isBoolean) {
+        answer.add(new Option("True", "0"));
+        answer.add(new Option("False", "1"));
+      } else {
+        ["Option A", "Option B", "Option C", "Option D"].forEach((label, index) => answer.add(new Option(label, String(index))));
+      }
+      ["choice-a", "choice-b", "choice-c", "choice-d"].forEach(id => {
+        document.getElementById(id).required = !isBoolean;
+      });
+    }
+
+    document.querySelectorAll(".nav button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".nav button").forEach(tab => tab.removeAttribute("aria-current"));
+        button.setAttribute("aria-current", "page");
+        document.querySelectorAll(".view").forEach(view => view.classList.remove("is-active"));
+        document.getElementById(`${button.dataset.view}-view`).classList.add("is-active");
+        if (button.dataset.view === "library") renderQuestionBank();
+      });
+    });
+
+    [areaFilter, topicFilter, levelFilter].forEach(filter => {
+      filter.addEventListener("change", () => {
+        if (filter === areaFilter) refreshTopicOptions();
+        updateFilterSummary();
+      });
+    });
+    document.getElementById("start-button").addEventListener("click", startSession);
+    document.getElementById("bank-search").addEventListener("input", renderQuestionBank);
+    document.getElementById("new-type").addEventListener("change", toggleQuestionType);
+
+    document.getElementById("question-form").addEventListener("submit", event => {
+      event.preventDefault();
+      formStatus.textContent = "";
+      formStatus.classList.remove("is-error");
+      const type = document.getElementById("new-type").value;
+      const sourceTitle = document.getElementById("new-source-title").value.trim();
+      const sourceUrl = document.getElementById("new-source-url").value.trim();
+      let source;
+      if (sourceTitle || sourceUrl) {
+        if (!sourceTitle || !sourceUrl || !/^https?:\/\//i.test(sourceUrl)) {
+          formStatus.textContent = "Add both a reference title and a valid http(s) URL, or leave both fields empty.";
+          formStatus.classList.add("is-error");
+          return;
+        }
+        source = { title: sourceTitle, url: sourceUrl };
+      }
+      const choices = type === "boolean"
+        ? ["True", "False"]
+        : ["choice-a", "choice-b", "choice-c", "choice-d"].map(id => document.getElementById(id).value.trim());
+      const question = {
+        id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        prompt: document.getElementById("new-prompt").value.trim(),
+        topic: document.getElementById("new-topic").value.trim(),
+        area: document.getElementById("new-area").value,
+        level: document.getElementById("new-level").value,
+        type,
+        choices,
+        answer: Number(document.getElementById("new-answer").value),
+        explanation: document.getElementById("new-explanation").value.trim(),
+        ...(source ? { source } : {})
+      };
+      if (!isValidQuestion(question)) {
+        formStatus.textContent = "Check that the question, choices, correct answer, and explanation are complete.";
+        formStatus.classList.add("is-error");
+        return;
+      }
+      customQuestions.push(question);
+      if (!saveCustomQuestions()) {
+        customQuestions.pop();
+        return;
+      }
+      event.currentTarget.reset();
+      toggleQuestionType();
+      refreshTopicOptions();
+      updateFilterSummary();
+      renderQuestionBank();
+      formStatus.textContent = "Question saved to this browser and added to the bank.";
+    });
+
+    document.getElementById("clear-custom-button").addEventListener("click", () => {
+      if (!customQuestions.length) {
+        formStatus.textContent = "There are no personal questions to clear.";
+        formStatus.classList.remove("is-error");
+        return;
+      }
+      if (!window.confirm("Remove all questions you added in this browser? This cannot be undone unless you exported them.")) return;
+      const previousQuestions = customQuestions;
+      customQuestions = [];
+      if (!saveCustomQuestions()) {
+        customQuestions = previousQuestions;
+        return;
+      }
+      refreshTopicOptions();
+      updateFilterSummary();
+      renderQuestionBank();
+      formStatus.classList.remove("is-error");
+      formStatus.textContent = "Your questions were cleared.";
+    });
+
+    document.getElementById("export-button").addEventListener("click", () => {
+      if (!customQuestions.length) {
+        formStatus.classList.remove("is-error");
+        formStatus.textContent = "Add a question first; your personal question bank is empty.";
+        return;
+      }
+      const blob = new Blob([JSON.stringify(customQuestions, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "vestibular-review-questions.json";
+      link.click();
+      URL.revokeObjectURL(url);
+      formStatus.classList.remove("is-error");
+      formStatus.textContent = "Your questions were exported.";
+    });
+
+    refreshTopicOptions();
+    updateFilterSummary();
+    renderWelcome();
+    renderQuestionBank();
+    toggleQuestionType();
+  </script>
+</body>
+</html>
